@@ -1,0 +1,433 @@
+{% extends "index.html" %} {% block conteudo %}
+<style>
+    body {
+        font-family: sans-serif;
+    }
+    
+    #minhaTabela {
+        width: 80%;
+        margin: 0 auto;
+        border: 0;
+        box-shadow: 0 5px 30px darkgrey;
+        border-spacing: 0;
+    }
+    
+    #minhaTabela thead th {
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        padding: 5px 10px;
+    }
+    
+    #minhaTabela tr td {
+        padding: 5px 10px;
+        text-align: center;
+        cursor: pointer;
+        /**importante para não mostrar cursor de texto**/
+    }
+    
+    #minhaTabela tr td:last-child {
+        text-align: right;
+    }
+    /**Cores**/
+    
+    #minhaTabela tr:nth-child(odd) {
+        background-color: #eee;
+    }
+    /**Cor quando passar por cima**/
+    
+    #minhaTabela tr:hover td {
+        background-color: #feffb7;
+    }
+    /**Cor quando selecionado**/
+    
+    #minhaTabela tr.selecionado td {
+        background-color: #aff7ff;
+    }
+    
+    button#visualizarDados {
+        background-color: white;
+        border: 1px solid black;
+        width: 50%;
+        margin: 10px auto;
+        padding: 10px 0;
+        display: block;
+        color: black;
+    }
+</style>
+
+<script>
+    function dados_da_tabela() {
+        var tabela = document.getElementById("minhaTabela");
+        var linhas = tabela.getElementsByTagName("tr");
+
+        for (var i = 0; i < linhas.length; i++) {
+            var linha = linhas[i];
+            linha.addEventListener("click", function() {
+                //Adicionar ao atual
+                selLinha(this, false); //Selecione apenas um
+                //selLinha(this, true); //Selecione quantos quiser
+            });
+        }
+
+        /**
+        Caso passe true, você pode selecionar multiplas linhas.
+        Caso passe false, você só pode selecionar uma linha por vez.
+        **/
+        function selLinha(linha, multiplos) {
+            if (!multiplos) {
+                var linhas = linha.parentElement.getElementsByTagName("tr");
+                for (var i = 0; i < linhas.length; i++) {
+                    var linha_ = linhas[i];
+                    linha_.classList.remove("selecionado");
+                }
+            }
+            linha.classList.toggle("selecionado");
+        }
+
+        /**
+        Exemplo de como capturar os dados
+        **/
+        var btnVisualizar = document.getElementById("visualizarDados");
+
+        btnVisualizar.addEventListener("click", function() {
+            var selecionados = tabela.getElementsByClassName("selecionado");
+            //Verificar se eestá selecionado
+            if (selecionados.length < 1) {
+                alert("Selecione pelo menos uma linha");
+                return false;
+            }
+
+            var dados = "";
+
+            for (var i = 0; i < selecionados.length; i++) {
+                var selecionado = selecionados[i];
+                selecionado = selecionado.getElementsByTagName("td");
+                dados += "ID: " + selecionado[0].innerHTML + " - Nome: " + selecionado[1].innerHTML + " - Idade: " + selecionado[2].innerHTML + "\n";
+            }
+
+            alert(dados);
+        });
+    }
+
+    function adicionarParcela() {
+        $('#principal').append('<tr><td><input value="1" name="parcela[]" type="text" /></td><td><input value="01/01/2014" name="vencimento[]" type="text" /</td><td><input value="250,25" name="valor[]" type="text" /</td><td><select name="opcao[]"><option value="1">Dinheiro</option><option value="2">Cartão de Crédito</option></select></td><td><a href="javascript:;">Remover</a></td></tr>');
+    }
+
+    $('#principal').on('click', 'a', function() {
+        var td = $(this).parent();
+        var tr = $(td).parent();
+
+        tr.css('background', 'red');
+        tr.find('input[type=text], select').attr('disabled', true);
+        tr.hide();
+    });
+
+    //Funcao adiciona uma nova linha na tabela
+    function adicionaLinha(idTabela) {
+
+        var tabela = document.getElementById(idTabela);
+        var numeroLinhas = tabela.rows.length;
+        var linha = tabela.insertRow(numeroLinhas);
+        var celula1 = linha.insertCell(0);
+        var celula2 = linha.insertCell(1);
+        var celula3 = linha.insertCell(2);
+        var celula4 = linha.insertCell(3)
+
+        celula1.innerHTML = '<input type="text" id="nome" name="nome"><br><br>'
+        celula2.innerHTML = Math.floor((Math.random() * 100) + 1);
+        celula3.innerHTML = "<button onclick='removeLinha(this)'>Remover</button>";
+        celula4.innerHTML = "<button onclick='salvarLinha(this)'>Salvar</button>";
+
+
+    }
+
+    // funcao remove uma linha da tabela
+    function removeLinha(linha) {
+        var i = linha.parentNode.parentNode.rowIndex;
+        console.log(i)
+        document.getElementById('tbl').deleteRow(i);
+    }
+
+    function salvarLinha(linha) {
+
+        var i = linha.parentNode.parentNode.rowIndex;
+        var teste = document.getElementById('nome').value;
+        console.log(teste)
+        console.log(i)
+    }
+    var conta = 0;
+
+    // modelo 2 de inserção de tabela
+
+    function novaLinha() {
+        conta++;
+
+        var parte1 = "<tr><td>Teste " + conta + "</td>";
+        var parte2 = "<td  id='tabela_linha_" + conta + "'><input type='button' ";
+        var parte3 = "value='remover' onClick=\"javascript:removeLinha('tabela_linha_" + conta + "')\"></input>";
+        var parte4 = "<input type ='button'value='salvar' onClick=\"javascript:salvarLinha2('tabela_linha_" + conta + "')\"></input>";
+
+        document.getElementById("tabela_produto").innerHTML += parte1 + parte2 + parte3 + parte4;
+        document.getElementById("tabela_produto").innerHTML += "</td></tr>";
+
+    }
+
+    function removeLinha(id) {
+
+        teste = document.getElementById(id);
+        teste.parentNode.parentNode.removeChild(teste.parentNode);
+    }
+
+    function salvarLinha2(id) {
+        teste = document.getElementById(id);
+        console.log(teste)
+    }
+</script>
+
+<h1>
+
+    EM ATUALIZAÇÃO
+</h1>
+<!--
+<form method="post" action="/nascimento">
+    <div class="form-group input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        
+    </div>
+</form>
+-->
+<form action="/busca" method="post">
+    <div class="container">
+        <br/>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <form class="card card-sm">
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-search h4 text-body"></i>
+                        </div>
+                        <!--end of col-->
+                        <div class="col">
+                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Digite o nome da pessoa " id="nome_sql" name="nome_sql">
+                        </div>
+                        <!--end of col-->
+                        <div class="col-auto">
+                            <button class="btn btn-lg btn-success" type="submit">PESQUISAR</button>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                </form>
+            </div>
+            <!--end of col-->
+        </div>
+    </div>
+</form>
+<!--
+<table id='minhaTabela'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>01</td>
+            <td>Rodrigo</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>02</td>
+            <td>Taynara</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>03</td>
+            <td>Raveny</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>04</td>
+            <td>Sérgio</td>
+            <td>51</td>
+        </tr>
+        <tr>
+            <td>05</td>
+            <td>Alice</td>
+            <td>20</td>
+        </tr>
+    </tbody>
+</table>
+
+<button id="visualizarDados" onclick="dados_da_tabela()">Visualizar Dados</button>
+-->
+
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Tabela de informaçoes de nascimento
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de Nascimento</th>
+                        <th>Data de Registro</th>
+                        <th>livro</th>
+                        <th>Folha</th>
+                        <th>Termo</th>
+
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de Nascimento</th>
+                        <th>Data de Registro</th>
+                        <th>livro</th>
+                        <th>Folha</th>
+                        <th>Termo</th>
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for nasci in nascimento%}
+                    <tr>
+                        <td>{{nasci[7]}}</td>
+                        <td>{{nasci[9]}}</td>
+                        <td>{{nasci[19]}}</td>
+                        <td>{{nasci[20]}}</td>
+                        <td>{{nasci[22]}}</td>
+                        <td>{{nasci[24]}}</td>
+
+
+
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!--
+        
+<table id=itensTable border="1" tablename="itensTable" addbuttonlabel="Adicionar Item" nodeletebutton="false" addbuttonclass="btn btn-default">
+    <thead>
+        <tr>
+            <td style="text-align: center;"><b>Item</b></td>
+            <td style="text-align: center;"><b>Explicação</b></td>
+            <td style="text-align: center;"><b>Preview</b></td>
+        </tr>
+    </thead>
+    <tr>
+        <td class="form-group col-md-3">
+            <select class="selectpicker show-tick" name="itens" id="itens">
+                <optgroup>
+                    <option title="Selecione um Item" value="vazio">Selecione um Item</option>
+                </optgroup>
+                  <optgroup label="Componente">
+                    <option title="Componente - Checkbox" value="Checkbox">Checkbox</option>
+                    <option title="Componente - Select" value="Select">Select</option>
+                    <option title="Componente - Radio Button" value="RadioButton">Radio Button</option>
+                    <option title="Componente - Switch Button" value="SwitchButton">Switch Button</option>
+                  </optgroup>
+                  <optgroup label="Campo">
+                    <option title="Campo - Texto" value="Texto">Texto</option>
+                    <option title="Campo - Numerico" value="Numericor">Numérico</option>
+                    <option title="Campo - Data" value="Data">Data</option>
+                  </optgroup>
+            </select>
+        </td>
+        <td class="form-group col-md-4">
+            <input id="explicacao" name="explicacao" type="text">
+        </td>
+        <td class="form-group col-md-5">
+            <div id="checkbox">
+                <div class="checkbox">
+                    <label for="checkProcessador" class="txtCheck">
+                        <input type="checkbox" value="processador" id="checkProcessador" name="checkProcessador">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Processador
+                     </label>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+<!-- tabela dinamica
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<table id="principal" border="1" width="50%">
+    <tr>
+        <td>Parcela</td>
+        <td>Vencimento</td>
+        <td>Valor</td>
+        <td>Forma de Pagamento</td>
+        <td>&nbsp;</td>
+    </tr>
+
+    <tr>
+        <td><input value="1" name="parcela[]" type="text" /></td>
+        <td><input value="01/01/2014" name="vencimento[]" type="text" /</td>
+            <td><input value="250,25" name="valor[]" type="text" /</td>
+                <td>
+                    <select name="opcao[]">
+          <option value="1">Dinheiro</option>
+          <option value="2">Cartão de Crédito</option>
+        </select>
+                </td>
+                <td>
+                    <a href="javascript:;">Remover</a>
+                </td>
+    </tr>
+</table>
+
+<a href="javascript:;" onclick="adicionarParcela();">Adicionar</a>
+
+<table id="tbl" border="1">
+    <tr>
+        <td>Produto</td>
+        <td>Valor</td>
+        <td>Acao</td>
+        <td>Ação</td>
+    </tr>
+</table>
+<button onclick="adicionaLinha('tbl')">Adicionar</button>
+<form>
+
+    <input type="button" value="inserir" onClick="javascript:novaLinha()"></input>
+
+</form>
+
+<table id="tabela_produto">
+
+    <tr>
+
+        <td> Teste 1</td>
+
+        <td id="tabela_linha_1"><input type="button" value="remover"></td>
+        <td id="tabela_linha_1"><input type="button" value="salvar"></td>
+
+
+    </tr>
+
+</table>
+-->
+
+{%endblock%}

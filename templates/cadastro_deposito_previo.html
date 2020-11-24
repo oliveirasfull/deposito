@@ -1,0 +1,389 @@
+{% extends "index.html" %} {% block conteudo %}
+
+<script>
+    function dados_da_tabela() {
+        var tabela = document.getElementById("minhaTabela");
+        var linhas = tabela.getElementsByTagName("tr");
+        console.log('teste')
+        for (var i = 0; i < linhas.length; i++) {
+            var linha = linhas[i];
+            linha.addEventListener("click", function() {
+                //Adicionar ao atual
+                selLinha(this, false); //Selecione apenas um
+                //selLinha(this, true); //Selecione quantos quiser
+            });
+        }
+
+        /**
+        Caso passe true, você pode selecionar multiplas linhas.
+        Caso passe false, você só pode selecionar uma linha por vez.
+        **/
+        function selLinha(linha, multiplos) {
+            console.log('teste1')
+            if (!multiplos) {
+                var linhas = linha.parentElement.getElementsByTagName("tr");
+                for (var i = 0; i < linhas.length; i++) {
+                    var linha_ = linhas[i];
+                    linha_.classList.remove("selecionado");
+                }
+            }
+            linha.classList.toggle("selecionado");
+        }
+
+        /**
+        Exemplo de como capturar os dados
+        **/
+        var btnVisualizar = document.getElementById("visualizarDados");
+
+        btnVisualizar.addEventListener("click", function() {
+            var selecionados = tabela.getElementsByClassName("selecionado");
+            //Verificar se eestá selecionado
+            if (selecionados.length < 1) {
+                alert("Selecione pelo menos uma linha");
+                return false;
+            }
+
+            var dados = "";
+
+            for (var i = 0; i < selecionados.length; i++) {
+                var selecionado = selecionados[i];
+                selecionado = selecionado.getElementsByTagName("td");
+                dados += "ID: " + selecionado[0].innerHTML + " - Nome: " + selecionado[1].innerHTML + " - Idade: " + selecionado[2].innerHTML + "\n";
+            }
+
+            alert(dados);
+
+            document.getElementById("nome_pessoa").value = nome;
+            document.getElementById("result").value = dados;
+
+        });
+    }
+
+
+
+
+
+    function formatar(mascara, documento) {
+        var i = documento.value.length;
+        var saida = mascara.substring(0, 1);
+        var texto = mascara.substring(i)
+
+        if (texto.substring(0, 1) != saida) {
+            documento.value += texto.substring(0, 1);
+        }
+
+    }
+
+    function teste1() {
+        var tabl = document.getElementById('cpf_teste');
+        var l = tabl.rows.length;
+        //alert('Number of table rows: ' + l);
+        var s = '';
+        for (var i = 0; i < l; i++) {
+            var tr = tabl.rows[i];
+            //alert( 'Found ' + tr.nodeName + ' ' + i );
+            var cll = tr.childNodes[0];
+            //alert( 'Found a ' + cll.nodeName );
+            var ct = cll.innerHTML.replace(/<[^<>]+>/g, '');
+            alert(cll.nodeName + ' contains text: ' + ct);
+            s += '|' + cll.innerText;
+        }
+    }
+
+
+
+
+    function valida() {
+
+
+
+        if ((servico1.nome_solicitante.value == "") && (servico1.valor.value == "")) {
+
+            alert("Campos obrigatórios faltando!");
+            servico1.valor.focus();
+            servico1.servico.focus();
+            return false;
+        }
+    }
+
+
+</script>
+
+<style>
+    body {
+        font-family: sans-serif;
+    }
+    
+    #minhaTabela {
+        width: 80%;
+        margin: 0 auto;
+        border: 0;
+        box-shadow: 0 5px 30px darkgrey;
+        border-spacing: 0;
+    }
+    
+    #minhaTabela thead th {
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        padding: 5px 10px;
+    }
+    
+    #minhaTabela tr td {
+        padding: 5px 10px;
+        text-align: center;
+        cursor: pointer;
+        /**importante para não mostrar cursor de texto**/
+    }
+    
+    #minhaTabela tr td:last-child {
+        text-align: right;
+    }
+    /**Cores**/
+    
+    #minhaTabela tr:nth-child(odd) {
+        background-color: #eee;
+    }
+    /**Cor quando passar por cima**/
+    
+    #minhaTabela tr:hover td {
+        background-color: #feffb7;
+    }
+    /**Cor quando selecionado**/
+    
+    #minhaTabela tr.selecionado td {
+        background-color: #aff7ff;
+    }
+    
+    button#visualizarDados {
+        background-color: white;
+        border: 1px solid black;
+        width: 50%;
+        margin: 10px auto;
+        padding: 10px 0;
+        display: block;
+        color: black;
+    }
+</style>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="dados" ">VISUALIZAR DADOS</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+        <div class="modal-content ">
+            <form name="servico1" action="/depositoPrevio" method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="nome ">CPF do Apresentante</label>
+                        <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar( '###.###.###-##', this)" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="servico">Nome do Apresentante</label>
+                        <input type="text" id="servico" name="nome_solicitante" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="servico ">Tipo de Documento</label>
+                        <input type="text" id="documento" name="tipo_documento" required class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <fieldset>
+                            <legend> Escolha seus Titular</legend>
+                            <form>
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Gabriel"> Gabriel
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Natacha"> Natacha
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Joao Paulo"> Joao Paulo
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Dirce"> Dirce
+
+
+                            </form>
+                        </fieldset>
+                    </div>
+              
+            
+
+           
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
+              
+             </fieldset>
+        </form>  
+        </div>
+    </div>
+</div>
+
+ <form name="servico1" action="/depositoPrevio" method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="nome ">CPF do Apresentante</label>
+                        <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar( '###.###.###-##', this)" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="servico">Nome do Apresentante</label>
+                        <input type="text" id="servico" name="nome_solicitante"OnKeyPress="formatar( '(##)#####-####', this)" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="servico">Telefone do Apresentante</label>
+                        <input type="text" id="telefone" name="telefone_solicitante" maxlength="11"required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="servico ">Tipo de Documento</label>
+                        <input type="text" id="documento" name="tipo_documento" required class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <fieldset>
+                            <legend> Escolha seus Titular</legend>
+                            <form>
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Gabriel"> Gabriel
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Natacha"> Natacha
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Joao Paulo"> Joao Paulo
+                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Dirce"> Dirce
+
+
+                            </form>
+                        </fieldset>
+                    </div>
+                     <button type="submit"  class="btn btn-primary btn-salvar">Salvar</button>
+                </fieldset>
+        
+        </form>  
+
+
+
+
+<table id='minhaTabela'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>DOCUMENTO</th>
+       
+            <tr>
+    </thead>
+    {%for deposito in depositoGlobal%}
+    <tbody>
+        <tr>
+            <td>{{deposito.cod_deposito}}</td>
+            <td>{{deposito.cpf_solicitante}}</td>
+            <td>{{deposito.nome_solicitante}}</td>
+            <td>{{deposito.tipo_documento}}</td>
+            <td>{{deposito.data_criacao}}</td>
+            
+          
+            <td>
+                <form method="post" action="/registro/{{deposito.cod_deposito}}">
+
+                        <button type="submit"></button>
+
+                    </form>
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{deposito.cod_deposito}}" >SERVIÇOS</button>
+
+                    <div class="modal fade bd-example-modal-lg{{deposito.cod_deposito}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true ">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <p style="text-align: center">{{deposito.nome_solicitante}} </p>
+                                <p style="text-align : center">{{deposito.tipo_documento}} </p>
+
+
+                   
+
+                             
+                      
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{deposito.cod_deposito}}">
+  DESCRIÇÃO
+</button>-->  
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter{{deposito.cod_deposito}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+
+  <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">teste serviços</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/servicoPrevio/{{deposito.cod_deposito}}" method="post">
+            <fieldset>
+
+                    <div class="form-group">
+                        <label for="nome ">Serviço</label>
+                        <input type="text" id="servico_previo" name="servico_previo" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                            <label for="nome ">Valor</label>
+                            <input type="number" id="valor_servico" name="valor_servico" required class="form-control">
+                    </div>
+                  
+         <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+        </form>
+
+
+      </div>
+     
+    </div>
+  </div>
+
+</div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Descricao</th>
+                        <th>Valor</th>
+                        <th>data</th>
+                        <th>Valor</th>
+
+
+                    </tr>
+                </thead>
+          
+                <tbody>
+                    <tr>
+                    {%for x in servicoGlobal%}
+                        
+                        {%if x.cod_deposito == deposito.cod_deposito%}
+                        <th>{{x.descricao_servico}} </th>
+                        <th>{{x.valor}}</th>
+                    
+                      
+
+
+
+
+                    </tr>
+                    {%endif%}
+                    {%endfor%}
+                  
+                   
+                </tbody>
+            </table>
+                              
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Send message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td>
+
+        </tr>
+
+    </tbody>
+    {%endfor%}
+</table>
+{%endblock%}

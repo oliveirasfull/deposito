@@ -1,0 +1,53 @@
+{% extends "index.html" %} {% block conteudo %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Tabela de Registro de Casamentos
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                          <th>Nome Noivo</th>
+                        <th>Nome Noiva</th>
+                        <th>Data de Registro</th>
+                        <th>livro</th>
+                        <th>Folha</th>
+                        <th>Termo</th>
+                        <th>Letra</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                         <th>Nome Noivo</th>
+                        <th>Nome Noiva</th>
+                        <th>Data de Registro</th>
+                        <th>livro</th>
+                        <th>Folha</th>
+                        <th>Termo</th>
+                        <th>Letra</th>
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for casamento in casamentos%}
+                    <tr>
+                        <td>{{casamento['nomenoivo']}}</td>
+                        <td>{{casamento['nomenoiva']}}</td>
+                        <td>{{casamento['dataregistro']}}</td>
+                        <td>{{casamento['livro']}}</td>
+                        <td>{{casamento['folha']}}</td>
+                        <td>{{casamento['termo']}}</td>
+                        <td>{{casamento['letra']}}</td>
+                     
+
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

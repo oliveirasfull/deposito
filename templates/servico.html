@@ -1,0 +1,144 @@
+{% extends "index.html" %} {% block conteudo %}
+
+<script>
+    function formatar(mascara, documento) {
+        var i = documento.value.length;
+        var saida = mascara.substring(0, 1);
+        var texto = mascara.substring(i)
+
+        if (texto.substring(0, 1) != saida) {
+            documento.value += texto.substring(0, 1);
+        }
+
+    }
+
+    function teste() {
+        console.log('teste')
+    }
+    onclick = "this.innerHTML = Date()" // colocar data atual no sistema
+
+
+
+    function valida() {
+
+        if ((servico1.servico.value == "") && (servico1.valor.value == "")) {
+
+            alert("Campos obrigatórios faltando!");
+            servico1.valor.focus();
+            servico1.servico.focus();
+            return false;
+        }
+    }
+</script>
+
+
+
+
+<button type="button" onclick="teste()" href="\obito">
+
+<svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+  </svg>
+  </button>
+
+<!-- 
+<div class="container">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>NOME</label>
+            <input type="text" class="form-control" name="nome">
+        </div>
+        <div class="form-group col-md-4">
+            <label>valor</label>
+            <input type="number" class="form-control" name="valor">
+        </div>
+
+       
+        <div class="form-group col-md-4">
+            <label>CPF</label>
+            <input type="text" class="form-control" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
+        </div>
+        <div class="form-group col-md-4">
+            <label>CNPJ</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="form-group col-md-4">
+            <label>CEP</label>
+            <input type="text" class="form-control" name="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)">
+        </div>
+        -->
+</div>
+
+<form name="servico1" action="/caixadia" method="post">
+    <fieldset>
+        <div class="form-group">
+            <label for="nome">CPF do Apresentante</label>
+            <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="console">Valor</label>
+            <input type="number" id="valor" name="valor" required step="any" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="servico">Serviço</label>
+            <input type="text" id="servico" name="servico" required class="form-control">
+        </div>
+
+        <button type="submit" onclick="valida()" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+
+</form>
+
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Tabela de Registro de Serviços
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Descricao</th>
+                        <th>CPF</th>
+                        <th>data</th>
+                        <th>Valor</th>
+
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Descricao</th>
+                        <th>CPF</th>
+                        <th>data</th>
+                        <th>Total : {{bruto}}</th>
+
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for serv in servico%}
+                    <tr>
+                        <td>{{serv.descricao}}</td>
+                        <td>{{serv.cpf}}</td>
+                        <td>{{serv.data}}</td>
+                        <td>{{serv.valor}}</td>
+
+
+
+
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+{%endblock%}

@@ -1,0 +1,1282 @@
+    [{
+            "nomefalecido": "JOSÉ GOUVEIA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190102",
+            "idadefal": "59",
+            "causafal": "<CM>INSUFICIÊNCIA RENAL</CM><CM>SARCOMA</CM>"
+        },
+        {
+            "nomefalecido": "JACIRA CABRAL DE CARVALHO",
+            "sexo": "F",
+            "datafal": "20190106",
+            "idadefal": "52",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA;</CM><CM>AVC;</CM>"
+        },
+        {
+            "nomefalecido": "WILSON GUERRA DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20190101",
+            "idadefal": "76",
+            "causafal": "<CM>CHOQUE HIPOVOLÊMICO</CM><CM>EMORRAGIA</CM><CM>Outras Condições que contribuiram para a morte: Hemorragia Digestiva Baixa; Doença Renal</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCA FERREIRA DA SILVA",
+            "sexo": "F",
+            "datafal": "20190108",
+            "idadefal": "83",
+            "causafal": "<CM>R- 98;</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ MARIA ALVES",
+            "sexo": "M",
+            "datafal": "20190103",
+            "idadefal": "61",
+            "causafal": "<CM>FALENCIA MULTIPLA DE ORGÃOS</CM><CM>SEPSE GRAVE</CM><CM>PNEUMONIA NOSOCOMIAL</CM>"
+        },
+        {
+            "nomefalecido": "MARIA CONCEIÇÃO FERNANDES FONTENELE",
+            "sexo": "F",
+            "datafal": "20190108",
+            "idadefal": "63",
+            "causafal": "<CM>SEPSE DE FOCO ABDOMINAL</CM><CM>PANCREATITIS AGUDA</CM><CM>PNEUMONIA ASPIRATIVA</CM><CM>Outras condições significativas que contribuiram para a morte: Hipertensão Arterial Sistêmica</CM>"
+        },
+        {
+            "nomefalecido": "OSVALDO DA COSTA CAVALCANTE",
+            "sexo": "M",
+            "datafal": "20190110",
+            "idadefal": "72",
+            "causafal": "<CM>CHOQUE SÉPTICO</CM><CM>ABSCESSO HEPÁTICO</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIO BANDEIRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190114",
+            "idadefal": "63",
+            "causafal": "<CM>CHOQUE HEMORRÁGICO;</CM>"
+        },
+        {
+            "nomefalecido": "JOÃO AMORIM DE SOUZA",
+            "sexo": "M",
+            "datafal": "20190111",
+            "idadefal": "63",
+            "causafal": "<CM>DESCONHECIDO;</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ EDSON DE LIMA",
+            "sexo": "M",
+            "datafal": "20190115",
+            "idadefal": "109",
+            "causafal": "<CM>MORTE INSTANTÂNEA;</CM><CM>SENILIDADE;</CM>"
+        },
+        {
+            "nomefalecido": "JULIETA ALVES DA SILVA",
+            "sexo": "F",
+            "datafal": "20190120",
+            "idadefal": "93",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA</CM>"
+        },
+        {
+            "nomefalecido": "OLIMPIO COSME D'OLIVEIRA",
+            "sexo": "M",
+            "datafal": "20190123",
+            "idadefal": "85",
+            "causafal": "<CM>MORTE SÚBITA</CM><CM>SENILIDADE</CM>"
+        },
+        {
+            "nomefalecido": "PEDRO GOMES DE OLIVEIRA",
+            "sexo": "M",
+            "datafal": "20190124",
+            "idadefal": "77",
+            "causafal": "<CM>CID R98</CM>"
+        },
+        {
+            "nomefalecido": "CRISPINIANO MIGUEL",
+            "sexo": "M",
+            "datafal": "20190125",
+            "idadefal": "64",
+            "causafal": "<CM>DESCONHECIDA</CM>"
+        },
+        {
+            "nomefalecido": "MANOEL FRANCISCO COUTINHO",
+            "sexo": "M",
+            "datafal": "20190123",
+            "idadefal": "77",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA - CID R98</CM><CM>Outras condições significativas que contribuíram para a morte: HIPERTENSÃO ARTERIAL; SENILIDADE</CM>"
+        },
+        {
+            "nomefalecido": "MOACIR BENTO SANTOS",
+            "sexo": "M",
+            "datafal": "20190127",
+            "idadefal": "71",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA</CM><CM>INSUFICIÊNCIA RESPIRATÓRIA AGUDA</CM><CM>LEUCEMIA AGUDA</CM>"
+        },
+        {
+            "nomefalecido": "VALDEMAR BATISTA SALES",
+            "sexo": "M",
+            "datafal": "20190129",
+            "idadefal": "75",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA;</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO MONTEIRO DA SILVA",
+            "sexo": "M",
+            "datafal": "20190203",
+            "idadefal": "56",
+            "causafal": "<CM>CHOQUE CARDIOGÊNICO</CM><CM>INSUFICIÊNCIA RESPIRATÓRIA AGUDA</CM><CM>TUBERCULOSE PULMONAR</CM>"
+        },
+        {
+            "nomefalecido": "HERMILTON SOUZA DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20190203",
+            "idadefal": "44",
+            "causafal": "<CM>SEPTICEMIA;</CM><CM>PNEUMONIA BACTERIANA;</CM><CM>DOÊNÇA PULMONAR OBSTRUTIVA CRÔNICA;</CM>"
+        },
+        {
+            "nomefalecido": "RONI CLEI SILVA DE LIMA",
+            "sexo": "M",
+            "datafal": "20190202",
+            "idadefal": "38",
+            "causafal": "<CM>MORTE SUBITA</CM><CM>AFOGAMENTO SUBMERSÃO EM ÁGUAS NATURAIS</CM>"
+        },
+        {
+            "nomefalecido": "JOSIAS TORRES DA SILVA",
+            "sexo": "M",
+            "datafal": "20190205",
+            "idadefal": "33",
+            "causafal": "<CM>ASFIXIA</CM><CM>CHOQUE ELETRICO ELETROPLESSÃO FULMINAÇÃO</CM>"
+        },
+        {
+            "nomefalecido": "AURELIO DE SOUZA ZOME",
+            "sexo": "M",
+            "datafal": "20190207",
+            "idadefal": "95",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA;</CM><CM>EDEMA AGÚDO NO PULMÃO;</CM><CM>CARDIOPATIA CRÔNICO;</CM>"
+        },
+        {
+            "nomefalecido": "LUIZ FERREIRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190207",
+            "idadefal": "98",
+            "causafal": "<CM>INSUFICIÊNCIA CARDÍACA CONGESTIVA;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA IZABEL LEITE",
+            "sexo": "F",
+            "datafal": "20190208",
+            "idadefal": "71",
+            "causafal": "<CM>MORTE NÃO ASSISTIDA</CM><CM>CARDIOPATIA</CM>"
+        },
+        {
+            "nomefalecido": "ELIZOMAR SOARES LEITÃO",
+            "sexo": "M",
+            "datafal": "20190208",
+            "idadefal": "44",
+            "causafal": "<CM>CID Z98</CM><CM>CID R99</CM>"
+        },
+        {
+            "nomefalecido": "KAILA ARAÚJO RODRIGUES",
+            "sexo": "F",
+            "datafal": "20190212",
+            "idadefal": "14",
+            "causafal": "<CM>CHOQUE SÉPTICO</CM><CM>SEPSE GRAVE</CM><CM>NEUROPENIA FEBRIL</CM><CM>LEUCEMIA LINFÓIDE AGUDA</CM>"
+        },
+        {
+            "nomefalecido": "LUZIA BARBOSA DA COSTA",
+            "sexo": "F",
+            "datafal": "20190212",
+            "idadefal": "93",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA;</CM>"
+        },
+        {
+            "nomefalecido": "ERNANDES MOREIRA NUNES ",
+            "sexo": "M",
+            "datafal": "20190211",
+            "idadefal": "25",
+            "causafal": "<CM>CHOQUE HIPOVOLÊMICO;</CM><CM>DAF - REGIÃO ANTERIOR DO TÓRAX;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA TEIXEIRA SOMBRA",
+            "sexo": "F",
+            "datafal": "20190215",
+            "idadefal": "63",
+            "causafal": "<CM>SEPSE DE FOCO PULMONAR;</CM><CM>PNEUMONIA;</CM><CM>CA DO PULMÃO;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA DAS GRAÇAS MAGALHÃES DE PAULA",
+            "sexo": "F",
+            "datafal": "20190217",
+            "idadefal": "69",
+            "causafal": "<CM>FALÊNCIA MULTIPLA DOS ÔRGÃOS</CM><CM>CHOQUE SÉPTICO PULMONAR</CM><CM>PNEUMONIA</CM><CM>NEOPLASIA DE MAMA</CM>"
+        },
+        {
+            "nomefalecido": "OTACILIO FIGUEIRA DE ARAUJO",
+            "sexo": "M",
+            "datafal": "20190221",
+            "idadefal": "88",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA;</CM><CM>INSUFICIÊNCIA CARDÍACA;</CM><CM>DPOC;</CM><CM>SENILIDADE;</CM>"
+        },
+        {
+            "nomefalecido": "SEBASTIÃO MUNIZ DA SILVA",
+            "sexo": "M",
+            "datafal": "20190221",
+            "idadefal": "37",
+            "causafal": "<CM>CHOQUE HIPOVOLÊMICO;</CM><CM>FERIDA- SOLUÇÃO DE FERIMENTO NA REGIÃO PARAESTERNAL ESQUERDA;</CM>"
+        },
+        {
+            "nomefalecido": "HERMANO COSTA FILHO",
+            "sexo": "M",
+            "datafal": "20190221",
+            "idadefal": "56",
+            "causafal": "<CM>ACIDENTE VASCULAR CEREBRAL HEMORRAGICO</CM><CM>HIRPETENÇÃO ARTERIAL SITEMICA</CM>"
+        },
+        {
+            "nomefalecido": "GILDO PADILHA SILVA",
+            "sexo": "M",
+            "datafal": "20190224",
+            "idadefal": "47",
+            "causafal": "<CM>PCR</CM><CM>CÂNCER DE PÂNCREAS</CM>"
+        },
+        {
+            "nomefalecido": "MADALENA NUNES MARQUES",
+            "sexo": "F",
+            "datafal": "20190226",
+            "idadefal": "67",
+            "causafal": "<CM>PARADA CARDIO REPIRATÓRA</CM><CM>EDEMA AGUDO DE PULMÃO</CM>"
+        },
+        {
+            "nomefalecido": "LUZIA ALTINA DE LIMA",
+            "sexo": "F",
+            "datafal": "20190304",
+            "idadefal": "82",
+            "causafal": "<CM>COMA;</CM><CM>SEQUELA DO AVC;</CM><CM>HIPERTENSÃO ARTERIAL SISTÊMICA;</CM><CM>DIABETES MELITUS;</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO MEDEIRO DE OLIVEIRA",
+            "sexo": "M",
+            "datafal": "20190307",
+            "idadefal": "102",
+            "causafal": "<CM>PNEUMONIA</CM><CM>ANEMIA CRÔNICA</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO MARQUES RIBEIRO",
+            "sexo": "M",
+            "datafal": "20190312",
+            "idadefal": "76",
+            "causafal": "<CM>Choque Séptico Refratário</CM><CM>Sepse Pulmonar</CM><CM>Doença Pulmonar Obstrutiva Crônica</CM>"
+        },
+        {
+            "nomefalecido": "NAILAN RODRIGUES DE SOUZA",
+            "sexo": "M",
+            "datafal": "20190317",
+            "idadefal": "17",
+            "causafal": "<CM>TRAUMATISMO CRÂNEO - CEFÁLICO</CM><CM>QUEDA DE VEICULO EM MOVIMENTO</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIO CIRLEUDO SOARES DA SILVA",
+            "sexo": "M",
+            "datafal": "20190318",
+            "idadefal": "45",
+            "causafal": "<CM>SEPSE DE FOCO ABDOMINAL</CM><CM>DOENÇA RENAL AGUDA</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ RODRIGUES DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20190318",
+            "idadefal": "60",
+            "causafal": "<CM>MORTE SÚBITA;</CM><CM>CA GASTRICO;</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO NONATO FERREIRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190315",
+            "idadefal": "37",
+            "causafal": "<CM>FERIMENTO POR ARMA DE FOGO</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO BARBOSA DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20190310",
+            "idadefal": "68",
+            "causafal": "<CM>HEMORRAGIA INTRACRANIANA;</CM><CM>TRAUMATISMO CRANIOENCEFÁLICO;</CM><CM>AÇÃO CONTUNDENTE;</CM>"
+        },
+        {
+            "nomefalecido": "LUZIA PEREIRA SOUZA",
+            "sexo": "F",
+            "datafal": "20190328",
+            "idadefal": "71",
+            "causafal": "<CM>EDEMA AGUDO PULMONAR</CM><CM>CHOQUE CARDIOGENICO</CM><CM>INFARTO AGUDO DO MIORCÁRDIO</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO MARREIRO SOBRINHO",
+            "sexo": "M",
+            "datafal": "20190316",
+            "idadefal": "74",
+            "causafal": "<CM>CHOQUE SÉPTICO</CM><CM>PNEUMONIA NOSOCOMIAL</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ DE SOUSA",
+            "sexo": "M",
+            "datafal": "20190330",
+            "idadefal": "81",
+            "causafal": "<CM>CHOQUE SÉPTICO</CM><CM>PNEUMONIA COMUNITÁRIA</CM>"
+        },
+        {
+            "nomefalecido": "VICENTE PAULO DE ALMEIDA",
+            "sexo": "M",
+            "datafal": "20190331",
+            "idadefal": "91",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA;</CM><CM>DPOC;</CM><CM>SENILIDADE;</CM><CM>HIPERTENSÃO ARTERIAL;</CM><CM>DIABETES MELITUS II;</CM>"
+        },
+        {
+            "nomefalecido": "MANOEL VICENTE DE ORLANDO",
+            "sexo": "M",
+            "datafal": "20190325",
+            "idadefal": "84",
+            "causafal": "<CM>MORTE SUBITA, PARADA CARDIORRESPIRATÓRIA</CM>"
+        },
+        {
+            "nomefalecido": "ALZIRA DOMINGA DA SILVA",
+            "sexo": "F",
+            "datafal": "20190403",
+            "idadefal": "96",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA;</CM><CM>FIBROSE PULMONAR;</CM><CM>SENILIDADE;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA FERREIRA NUNES",
+            "sexo": "F",
+            "datafal": "20190411",
+            "idadefal": "56",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA;</CM><CM>DPOC;</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO VALDIVINO DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20190414",
+            "idadefal": "100",
+            "causafal": "<CM>DOENÇA PULMONAR OBSTRUTIVA CRÔNICA</CM><CM>INSUFICIÊNCIA CARDIACA CONGESTIVA</CM><CM>ANEMIA NORMOCÍTICA</CM>"
+        },
+        {
+            "nomefalecido": "MARIA DE NAZARETH DA SILVA",
+            "sexo": "F",
+            "datafal": "20190414",
+            "idadefal": "93",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "DAUZILENE COSTA DOS SANTOS",
+            "sexo": "F",
+            "datafal": "20190419",
+            "idadefal": "22",
+            "causafal": "<CM>CHOQUE SÉPTICO;</CM><CM>ACIDOSE METABÓLICA REFRATÁRIA;</CM><CM>DISTURBIO DE COAGULAÇÃO;</CM><CM>EDEMA AGUDO DE PULMÃO;</CM><CM>ANEMIA;</CM><CM>INSUFICIÊNCIA RENAL AGUDA;</CM>"
+        },
+        {
+            "nomefalecido": "ANA VITÓRIA VENÂNCIO DA SILVA",
+            "sexo": "F",
+            "datafal": "20190421",
+            "idadefal": "09",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA AGÚDA;</CM><CM>CHOQUE SÉPTICO;</CM><CM>PNEUMINIA;</CM><CM>BRONCODISPLASIA;</CM><CM>ENCEFALOPATIA NÃO EVOLUTIVA;</CM><CM>TRISSOMIA 21;</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCA DE FREITAS PINTO",
+            "sexo": "F",
+            "datafal": "20190426",
+            "idadefal": "89",
+            "causafal": "<CM>PARADA CARDIORESPIRATÓRIA</CM><CM>FALÊNCIA MÚLTIPLAS DOS ÓRGÃOS</CM>"
+        },
+        {
+            "nomefalecido": "JULIO PEREIRA LOPES",
+            "sexo": "M",
+            "datafal": "20190427",
+            "idadefal": "69",
+            "causafal": "<CM>PNEUMONIA ASPIRATIVA</CM><CM>INSUFICIÊNCIA RENAL AGUDA</CM><CM>DIABETES MELLITUS</CM><CM>ANEMIA</CM>"
+        },
+        {
+            "nomefalecido": "ZILMA REGADA CAVALCANTE",
+            "sexo": "F",
+            "datafal": "20190418",
+            "idadefal": "90",
+            "causafal": "<CM>MORTE INSTANTÂNEA;</CM><CM>SENILIDADE;</CM>"
+        },
+        {
+            "nomefalecido": "LUIZ MOREIRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190429",
+            "idadefal": "29",
+            "causafal": "<CM>AGRESSÃO POR ARMA DE FOGO</CM>"
+        },
+        {
+            "nomefalecido": "MANOEL MARCONDES MONTEIRO BRAGA",
+            "sexo": "M",
+            "datafal": "20190501",
+            "idadefal": "67",
+            "causafal": "<CM>PARADA CARDIORREPIRATÓRIA</CM><CM>HEPATITE CRÔNICA</CM>"
+        },
+        {
+            "nomefalecido": "AIRTON DAMASCENO DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20190501",
+            "idadefal": "31",
+            "causafal": "<CM>CHOQUE HIPOVOLÊMICO</CM><CM>HEMORRAGIA EXTERNA</CM><CM>TRANSFIXAÇÃO PULMÃO ESQUERDO</CM><CM>AÇÃO CORTOCONTUNDENTE</CM><CM>PERFUROCORTANTE</CM>"
+        },
+        {
+            "nomefalecido": "MARIA SOCORRO SANTOS DA SILVA",
+            "sexo": "F",
+            "datafal": "20190509",
+            "idadefal": "53",
+            "causafal": "<CM>FALÊNCIA MULTIPLA DOS ÓRGÃOS</CM><CM>CÂNCER ÚTERO E ANEXOS</CM>"
+        },
+        {
+            "nomefalecido": "ROMARIZ QUEIROZ COSTA",
+            "sexo": "M",
+            "datafal": "20190511",
+            "idadefal": "79",
+            "causafal": "<CM>PARADA CARDIACA</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIO JOSÉ GOMES DE SOUZA",
+            "sexo": "M",
+            "datafal": "20190512",
+            "idadefal": "56",
+            "causafal": "<CM>CHOQUE CARDIOGÊNICO</CM><CM>INSUFICIÊNCIA CARDÍACA</CM>"
+        },
+        {
+            "nomefalecido": "ANTÔNIO RODRIGUES FREITA",
+            "sexo": "M",
+            "datafal": "20190513",
+            "idadefal": "87",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "IZAIAS ROBERTO DA SILVA",
+            "sexo": "M",
+            "datafal": "20190430",
+            "idadefal": "83",
+            "causafal": "<CM>CHOQUE SÉPTICO;</CM><CM>SEPSE URINÁRIA;</CM><CM>NEOPLASIA DE PÊNIS;</CM>"
+        },
+        {
+            "nomefalecido": "RAVY ANTÔNIO NASCIMENTO DE LIMA",
+            "sexo": "M",
+            "datafal": "20190504",
+            "idadefal": "1",
+            "causafal": "<CM>CAUSA DESCONHECIDA</CM>"
+        },
+        {
+            "nomefalecido": "EDSON FERROL DA SILVA",
+            "sexo": "M",
+            "datafal": "20190515",
+            "idadefal": "45",
+            "causafal": "<CM>CHOQUE CARDIOGÊNICO;</CM><CM>INSUFICIÊNCIA CARDÍACA CONGESTIVA;</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ MARTINS VIEIRA",
+            "sexo": "M",
+            "datafal": "20190516",
+            "idadefal": "71",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "LUAN FERREIRA DO NASCIMENTO",
+            "sexo": "M",
+            "datafal": "20190421",
+            "idadefal": "9",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA;</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO DO REGO",
+            "sexo": "M",
+            "datafal": "20190516",
+            "idadefal": "76",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA;</CM><CM>TAM;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA JOSÉ FERREIRA DE CARVALHO",
+            "sexo": "F",
+            "datafal": "20190525",
+            "idadefal": "59",
+            "causafal": "<CM>CHOQUE SÉPTICO</CM><CM>TAMPONAMENTO CARDÍACO</CM>"
+        },
+        {
+            "nomefalecido": "SEBASTIÃO SOARES DA SILVA",
+            "sexo": "M",
+            "datafal": "20190526",
+            "idadefal": "79",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA;</CM><CM>DOENÇA PULMONAR OBSTRUTIVA CRÔNICA;</CM><CM>SEPSE PULMONAR;</CM>"
+        },
+        {
+            "nomefalecido": "ACRINALDO DA SILVA FREIRE",
+            "sexo": "M",
+            "datafal": "20190522",
+            "idadefal": "45",
+            "causafal": "<CM>CHOQUE HIPOVOLEMICO</CM><CM>DISPARO DE ARMA DE FOGO</CM>"
+        },
+        {
+            "nomefalecido": "FATIANA BATISTA DO NASCIMENTO ALCANTARA",
+            "sexo": "F",
+            "datafal": "20190525",
+            "idadefal": "34",
+            "causafal": "<CM>TROMBOEMBOLISMO PULMONAR;</CM><CM>DOENÇA HIPERTENSIVA ESPECÍFICA DA GRAVIDEZ;</CM><CM>DIABETES MELLITUS GESTACIONAL;</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIA FERREIA LIMA",
+            "sexo": "F",
+            "datafal": "20190530",
+            "idadefal": "70",
+            "causafal": "<CM>DPCO ENFISEMA PULMONAR</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO NONATO FILHO",
+            "sexo": "M",
+            "datafal": "20190602",
+            "idadefal": "74",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA;</CM><CM>DPOC;</CM><CM>ANEMIA GRAVE;</CM><CM>CA DE PRÓSTATA;</CM>"
+        },
+        {
+            "nomefalecido": "JAIME DA SILVA LIMA",
+            "sexo": "M",
+            "datafal": "20190531",
+            "idadefal": "30",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA</CM>"
+        },
+        {
+            "nomefalecido": "IRENE FERREIRA BRAGA",
+            "sexo": "F",
+            "datafal": "20190520",
+            "idadefal": "96",
+            "causafal": "<CM>PARADA CARDIO RESPIRATÓRIA</CM><CM>DPOC</CM>"
+        },
+        {
+            "nomefalecido": "MARIA LUZIA SANTANA DO NASCIMENTO",
+            "sexo": "F",
+            "datafal": "20190521",
+            "idadefal": "63",
+            "causafal": "<CM>CHOQUE SÉPTICO REFRATÁRIO</CM><CM>PNEUMONIA HOSPITALAR</CM>"
+        },
+        {
+            "nomefalecido": "JOÃO RIBEIRO DE FIGUEIREDO",
+            "sexo": "M",
+            "datafal": "20190605",
+            "idadefal": "83",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA;</CM><CM>HIPERTENSÃO ARTERIAL;</CM>"
+        },
+        {
+            "nomefalecido": "LUCAS DO NASCIMENTO NOBRE",
+            "sexo": "M",
+            "datafal": "20190608",
+            "idadefal": "15",
+            "causafal": "<CM>HEMORRAGIA PULMONAR</CM><CM>NEUTROPENIA FEBRIL</CM><CM>LEUCEMIA LINFOIDE AGUDA - B</CM>"
+        },
+        {
+            "nomefalecido": "BALBINO RAMIRO VASQUE",
+            "sexo": "M",
+            "datafal": "20190608",
+            "idadefal": "94",
+            "causafal": "<CM>MORTE SUBITA</CM><CM>SENILIDADE</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIO ALTINA DE LIMA",
+            "sexo": "M",
+            "datafal": "20190609",
+            "idadefal": "63",
+            "causafal": "<CM>MORTE SEM ASSITÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "CARMOSA BATISTA DA SILVA",
+            "sexo": "F",
+            "datafal": "20190611",
+            "idadefal": "46",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "MARIA ANTONIA MELONIA DE ANDRADE",
+            "sexo": "F",
+            "datafal": "20190612",
+            "idadefal": "48",
+            "causafal": "<CM>INSUFICIÊNCIA RENAL AGUDA</CM>"
+        },
+        {
+            "nomefalecido": "IDEUBRANDO DINIZ DA CRUZ",
+            "sexo": "M",
+            "datafal": "20190616",
+            "idadefal": "62",
+            "causafal": "<CM>CHOQUE SÉPTICO;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA JOSÉ FERNANDES DE SOUZA",
+            "sexo": "F",
+            "datafal": "20190617",
+            "idadefal": "62",
+            "causafal": "<CM>CAUSA DESCONHECIDA</CM>"
+        },
+        {
+            "nomefalecido": "MARIA FONCINA DE SOUZA",
+            "sexo": "F",
+            "datafal": "20190618",
+            "idadefal": "65",
+            "causafal": "<CM>SEPSE FOCO PULMONAR</CM>"
+        },
+        {
+            "nomefalecido": "MARINA PEREIRA DO NASCIMENTO",
+            "sexo": "F",
+            "datafal": "20190619",
+            "idadefal": "65",
+            "causafal": "<CM>ACIDENTE VASCULAR CEREBRAL</CM><CM>HIPERTENSÃO ARTERIAL</CM>"
+        },
+        {
+            "nomefalecido": "IDALINA PEREIRA CARDOSO",
+            "sexo": "F",
+            "datafal": "20190621",
+            "idadefal": "64",
+            "causafal": "<CM>CHOQUE SEPTICO PULMONAR</CM><CM>PNEUMONIA</CM>"
+        },
+        {
+            "nomefalecido": "MARIA FRANCISCA DE OLIVEIRA SILVA",
+            "sexo": "F",
+            "datafal": "20190624",
+            "idadefal": "83",
+            "causafal": "<CM>INSUFICIÊNCIA CARDIO-RESPIRATÓRIA</CM><CM>NÓDULO HEPÁTICO + ASCITE</CM><CM>HIPERTENSÃO ARTERIAL SITÊMICA;</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ FREITAS DA SILVA",
+            "sexo": "M",
+            "datafal": "20190625",
+            "idadefal": "84",
+            "causafal": "<CM>INSUFICIÊNCIA CARDIACA CONGESTIVA</CM><CM>CIRROSE HEPATICA</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO BIZERRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190630",
+            "idadefal": "86",
+            "causafal": "<CM>PARADA CARDIO RESPIRATORIA</CM><CM>DPOC</CM>"
+        },
+        {
+            "nomefalecido": "DEFILIA A'VILA DE MORAES",
+            "sexo": "F",
+            "datafal": "20190701",
+            "idadefal": "86",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA</CM><CM>SEPSE</CM><CM>ESCISIN</CM><CM>FRATURA DE FEMUR</CM>"
+        },
+        {
+            "nomefalecido": "MARIA DAMIÃO DA SILVA",
+            "sexo": "F",
+            "datafal": "20190706",
+            "idadefal": "65",
+            "causafal": "<CM>INSUFICIÊNCIA CARDIO RESPIRATÓRIA</CM><CM>DPOC + CARDIOPATIA</CM><CM>HAS + DM</CM>"
+        },
+        {
+            "nomefalecido": "ANTÔNIO DE HOLANDA LEITE",
+            "sexo": "M",
+            "datafal": "20190706",
+            "idadefal": "83",
+            "causafal": "<CM>SEPSE</CM><CM>HIPERTENSÃO PROSTÁTICA</CM><CM>DIABETES TIPO II DESCOMPESADA</CM>"
+        },
+        {
+            "nomefalecido": "WULMARIO FELIX DE MACÊDO",
+            "sexo": "M",
+            "datafal": "20190624",
+            "idadefal": "83",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA</CM><CM>FALENCIA MÚLTIPLA DOS ORGÃOS</CM><CM>CÂNCER DE PRÓSTATA</CM>"
+        },
+        {
+            "nomefalecido": "ARNALDO ALVES FLORES",
+            "sexo": "M",
+            "datafal": "20190708",
+            "idadefal": "57",
+            "causafal": "<CM>CHOQUE HIPOVOLÊMICO</CM><CM>HEMORRAGIA GASTROINTERTINAL</CM>"
+        },
+        {
+            "nomefalecido": "MARIA COSME LIBERALINO",
+            "sexo": "F",
+            "datafal": "20190709",
+            "idadefal": "74",
+            "causafal": "<CM>SEPSE DE FOCO CUTÂNEO;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA RAIMUNDA FÉLIX DA SILVA",
+            "sexo": "F",
+            "datafal": "20190710",
+            "idadefal": "41",
+            "causafal": "<CM>ENFARTE AGUDO DO MIOCÁRDIO;</CM><CM>HIPERTENSÃO ARTERIAL SISTÊMICA:</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO VIDAL VIEIRA",
+            "sexo": "M",
+            "datafal": "20190712",
+            "idadefal": "34",
+            "causafal": "<CM>CHOQUE HIPOVOLÊMICO;</CM><CM>HEMORRAGIA DIGESTIVA ALTA;</CM><CM>HEPATITE B CRÔNICA COM AGENTE DELTA;</CM>"
+        },
+        {
+            "nomefalecido": "GESSILENE GOMES DOS SANTOS DE AZEVEDO",
+            "sexo": "F",
+            "datafal": "20190716",
+            "idadefal": "43",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA</CM><CM>FALÊNCIA MÚLTIPLOS DOS ÓRGÃOS</CM>"
+        },
+        {
+            "nomefalecido": "LUIZ BARBOSA BEZERRA",
+            "sexo": "M",
+            "datafal": "20190722",
+            "idadefal": "49",
+            "causafal": "<CM>TRAUMATISMO CRANIOENCEFÁLICO</CM><CM>FERIMENTO POR PROJETIL DE ARMA DE FOGO</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ MACIEL DE SOUZA",
+            "sexo": "M",
+            "datafal": "20190805",
+            "idadefal": "83",
+            "causafal": "<CM>INSUFICIÊNCIA CARDIORRESPIRATÓRIA;</CM><CM>DERRAME PLEURAL</CM><CM>AVC + PNEUMONIA</CM><CM>HIPETENSÃO ARTERIAL SISTÊMICA + DM</CM>"
+        },
+        {
+            "nomefalecido": "GETÚLIO GONÇALVES ESPINDOLA",
+            "sexo": "M",
+            "datafal": "20190726",
+            "idadefal": "82",
+            "causafal": "<CM>FALÊNCIA MÚLTIPLA DE ORGÃOS;</CM><CM>SEPSE PULMONAR;</CM><CM>PNEUMONIA ASPIRATIVA;</CM><CM>AVC;</CM>"
+        },
+        {
+            "nomefalecido": "ALYSOM NATHÃ NOGUEIRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190808",
+            "idadefal": "28",
+            "causafal": "<CM>AUTO INTOXICAÇÃO POR NARCÓTICOS;</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIA DE SOUZA NASCIMENTO",
+            "sexo": "F",
+            "datafal": "20190808",
+            "idadefal": "69",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA, CID - R98</CM><CM>SEQUELA POR AVC;</CM><CM>TUMOR CEREBRAL, CID C71.8</CM><CM>HIPERTENSÃO SEVERA;</CM>"
+        },
+        {
+            "nomefalecido": "IVANILDO FREIRE SIDRÃO",
+            "sexo": "M",
+            "datafal": "20190808",
+            "idadefal": "70",
+            "causafal": "<CM>TRAUMATISMO CRANIANO;</CM><CM>AÇÃO CONTUNDENTE;</CM><CM>ACIDENTE DE TRANSITO;</CM>"
+        },
+        {
+            "nomefalecido": "JOÃO VITOR SANTOS DE ARAÚJO",
+            "sexo": "M",
+            "datafal": "20190808",
+            "idadefal": "02",
+            "causafal": "<CM>SEPSEMIA NÃO ESPECÍFICA;</CM><CM>ABDOME AGÚDO;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA NOGUEIRA SIQUEIRA",
+            "sexo": "F",
+            "datafal": "20190819",
+            "idadefal": "111",
+            "causafal": "<CM>MORTE DE COUSA DESCONHECIDO</CM>"
+        },
+        {
+            "nomefalecido": "MICAEL LIMA DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20190819",
+            "idadefal": "25",
+            "causafal": "<CM>ÓBITO NEONATAL;</CM>"
+        },
+        {
+            "nomefalecido": "MARCOS CARDOSO DA SILVA",
+            "sexo": "M",
+            "datafal": "20190819",
+            "idadefal": "28",
+            "causafal": "<CM>AUTO-INTOXICAÇÃO POR PRODUTO NÃO ESPECIFICADO; CID X69.9;</CM>"
+        },
+        {
+            "nomefalecido": "LEANDRO XAVIER NOGUEIRA",
+            "sexo": "M",
+            "datafal": "20190824",
+            "idadefal": "27",
+            "causafal": "<CM>ASFIXIA MECANICA</CM>"
+        },
+        {
+            "nomefalecido": "SEBASTIÃO BEZERRA SILVA",
+            "sexo": "M",
+            "datafal": "20190827",
+            "idadefal": "73",
+            "causafal": "<CM>INDETERMINADA;</CM><CM>PARADA CARDIORRESPIRATÓRIA;</CM><CM>CÂNCER DE PRÓSTATA;</CM>"
+        },
+        {
+            "nomefalecido": "LUIZ CARNEIRO DE LIMA",
+            "sexo": "M",
+            "datafal": "20190829",
+            "idadefal": "83",
+            "causafal": "<CM>INFARTO AGÚDO DO MIOCARDIO;</CM>"
+        },
+        {
+            "nomefalecido": "ADALBERTO PINHEIRO BATISTA",
+            "sexo": "M",
+            "datafal": "20190831",
+            "idadefal": "78",
+            "causafal": "<CM>PARADA CARDIO RESPIRATORIA</CM><CM>INSUFICIENCIA CARDIO RESPIRATORIA</CM>"
+        },
+        {
+            "nomefalecido": "ALMIR SILVESTRE GEA",
+            "sexo": "M",
+            "datafal": "20190901",
+            "idadefal": "58",
+            "causafal": "<CM>TUBERCULOSE;</CM><CM>SEPSE PULMONAR;</CM><CM>IRA;</CM>"
+        },
+        {
+            "nomefalecido": "ZUILO FERREIRA NERY",
+            "sexo": "M",
+            "datafal": "20190902",
+            "idadefal": "84",
+            "causafal": "<CM>INSUF. CARDIO RESPIRATÓRIA</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ BATISTA FÉLIX",
+            "sexo": "M",
+            "datafal": "20190905",
+            "idadefal": "83",
+            "causafal": "<CM>CHOQUE NEUROGÊNICO;</CM><CM>ACIDENTE VASCULAR CEREBRAL;</CM><CM>HIPERTENSÃO ARTERIAL;</CM><CM>DIABETES MELLITUS/</CM>"
+        },
+        {
+            "nomefalecido": "MARIA NUNES MORAIS",
+            "sexo": "F",
+            "datafal": "20190907",
+            "idadefal": "41",
+            "causafal": "<CM>SEPSE PULMONAR;</CM><CM>DOENÇA PULMONAR OBSTRUTIVA CRÔNICA;</CM><CM>PNEUMONIA COMUNITÁRIA;</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO GOMES DA SILVA",
+            "sexo": "M",
+            "datafal": "20190908",
+            "idadefal": "63",
+            "causafal": "<CM>MORTE SUBITA DE CAUSA DESCONHECIDA - CID R-96</CM>"
+        },
+        {
+            "nomefalecido": "MARIA DE FATIMA DE MENEZES DO CARMO",
+            "sexo": "F",
+            "datafal": "20190908",
+            "idadefal": "40",
+            "causafal": "<CM>PARADA CARDIO RESPIRATORIA</CM><CM>ABDOME OBSTRUTIVO AGUDO</CM><CM>INSUFICIENCIA RENAL AGUDA</CM><CM>ANEMIA GRAVE</CM><CM>OUTRAS CONDIÇÕES QUE CONTRIBUIRAM PARA A MORTE:</CM><CM>TUMEFAÇÃO, MASSA OU TUMORAÇÃO</CM><CM>INFECÇÃO TRATO URINARIO</CM>"
+        },
+        {
+            "nomefalecido": "ELIZEU SABOIA DE ALMEIDA",
+            "sexo": "M",
+            "datafal": "20190909",
+            "idadefal": "61",
+            "causafal": "<CM>INSUFICIÊNCIA CARDIORRESPIRATÓRIA;</CM><CM>NEUROPATIA+ SEQUELA TCE;</CM><CM>TCE GRAVE;</CM>"
+        },
+        {
+            "nomefalecido": "DIMAS PAIVA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190906",
+            "idadefal": "53",
+            "causafal": "<CM>MORTE SÚBITA SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "IRACEMA CARNEIRO PINHEIRO",
+            "sexo": "F",
+            "datafal": "20190909",
+            "idadefal": "75",
+            "causafal": "<CM>INSUFICIÊNCIA RENAL;</CM><CM>METASTASE;</CM><CM>CA OSSEO;</CM>"
+        },
+        {
+            "nomefalecido": "DANIEL BEZERRA CASTRO",
+            "sexo": "M",
+            "datafal": "20190910",
+            "idadefal": "1",
+            "causafal": "<CM>CHOQUE SÉPTICO</CM><CM>SEPSE GRAVE</CM><CM>HIDROCEFALIA</CM><CM>INSUFICIÊNCIA RENAL</CM>"
+        },
+        {
+            "nomefalecido": "BERTOLDO DA SILVA MAIA",
+            "sexo": "M",
+            "datafal": "20190911",
+            "idadefal": "83",
+            "causafal": "<CM>CID R-18</CM><CM>CID R-99</CM>"
+        },
+        {
+            "nomefalecido": "CATUNDA FERREIRA LIRA",
+            "sexo": "M",
+            "datafal": "20190914",
+            "idadefal": "83",
+            "causafal": "<CM>INSUFICIÊNCIA CARDIO-RESPIRATÓRIA</CM><CM>CHOQUE NEUROGÊNICO</CM><CM>AVC</CM>"
+        },
+        {
+            "nomefalecido": "DURVAL BATISTA DE ARAÚJO",
+            "sexo": "M",
+            "datafal": "20190912",
+            "idadefal": "76",
+            "causafal": "<CM>TAMPONAMENTO CARDÍACO</CM><CM>FERIMENTO PENETRANTE DO TÓRAX</CM><CM>AGRESSÃO FÍSICA</CM>"
+        },
+        {
+            "nomefalecido": "DIVA VIEIRA DE ARAÚJO",
+            "sexo": "F",
+            "datafal": "20190912",
+            "idadefal": "74",
+            "causafal": "<CM>TAMPONAMENTO CARDIACO</CM><CM>FERIMENTO PENETRANTE NO TÓRAX</CM><CM>AGRESSÃO FÍSICA</CM>"
+        },
+        {
+            "nomefalecido": "MOACIR SILVA DO NASCIMENTO",
+            "sexo": "M",
+            "datafal": "20190919",
+            "idadefal": "72",
+            "causafal": "<CM>COMA;</CM><CM>PLEURESIA HEPICTURY ESQUERDO;</CM><CM>CA. PULMONAR;</CM>"
+        },
+        {
+            "nomefalecido": "FRANCILEUDO BEZERRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20190916",
+            "idadefal": "8",
+            "causafal": "<CM>LESÃO ENCEFÁLICA</CM><CM>FRATURA DO CRANIO</CM><CM>TRAUMATISMO CRANIO ENCEFALICO</CM><CM>FERIMENTO POR ARMA DE FOGO</CM>"
+        },
+        {
+            "nomefalecido": "SEBASTIANA JACINTO DE ALMEIDA",
+            "sexo": "F",
+            "datafal": "20190925",
+            "idadefal": "99",
+            "causafal": "<CM>CID - R - 98</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCA FREIRE RAMOS",
+            "sexo": "F",
+            "datafal": "20190930",
+            "idadefal": "62",
+            "causafal": "<CM>CHOQUE SÉPTICO E HIPOVOLÊMICO;</CM><CM>ANEMIA SEVERA;</CM><CM>HIPOGLICEMIA SEVERA;</CM><CM>HIPERTENSÃO ARTERIAL SISTÊMICA;</CM>"
+        },
+        {
+            "nomefalecido": "LEONIZA OLIVEIRA DA ROCHA",
+            "sexo": "F",
+            "datafal": "20191004",
+            "idadefal": "77",
+            "causafal": "<CM>ANEMIA NORMOCÍTICA</CM><CM>DIABETES MELLITUS</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIA MARIA PIMENTA",
+            "sexo": "F",
+            "datafal": "20191004",
+            "idadefal": "42",
+            "causafal": "<CM>MORTE SUBITA DE ORIGEM CARDIACA;</CM><CM>CID- F-469;</CM>"
+        },
+        {
+            "nomefalecido": "JAISON DA SILVA BRITO",
+            "sexo": "M",
+            "datafal": "20191006",
+            "idadefal": "26",
+            "causafal": "<CM>ASFIXIA MECÂNICA</CM><CM>ENFORCAMENTO</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO ALVES PERET",
+            "sexo": "M",
+            "datafal": "20191008",
+            "idadefal": "63",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA;</CM><CM>CIRROSE HEPÁTICA;</CM><CM>HEPATOCARCINOMA;</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ PEREIRA DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20191008",
+            "idadefal": "70",
+            "causafal": "<CM>INSUFICIÊNCIA CARDÍACA CONGESTIVA, I- 509;</CM><CM>HIPERTENSÃO ARTERIAL SISTÊMICA, I- 10;</CM><CM>DIABETES MELLITUS TIPO I, E-10;</CM>"
+        },
+        {
+            "nomefalecido": "MANOEL VALE RODRIGUES",
+            "sexo": "M",
+            "datafal": "20191009",
+            "idadefal": "51",
+            "causafal": "<CM>CHOQUE CARDIOGÊNICO</CM><CM>COR PULMONALE + EDEMA AGUDO DE PULMÃO</CM><CM>SÍNDROME DA ANGUSTIA RESPIRATORIO DO ADULTO</CM><CM>PNEMONIA HOSPITALAR GRAVE</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCA ALVES CHAVES DA SILVA",
+            "sexo": "F",
+            "datafal": "20191010",
+            "idadefal": "43",
+            "causafal": "<CM>CHOQUE SÉPTICO</CM><CM>SEPSE GRAVE</CM><CM>PERITONITE FECAL</CM><CM>SINDROME DA IMUNODEFICIÊNCIA HUMANA</CM><CM>PÓS OPERATÓRIO LAPAROTOMIA EXPLORADORA</CM>"
+        },
+        {
+            "nomefalecido": "MATHIAS SOUZA PINTO",
+            "sexo": "M",
+            "datafal": "20191018",
+            "idadefal": "1",
+            "causafal": "<CM>CAUSA DESCONHECIDA</CM><CM>PARADA CARDIORESPITÓRIA</CM>"
+        },
+        {
+            "nomefalecido": "ANTÔNIA MONTEIRO DA SILVA",
+            "sexo": "F",
+            "datafal": "20191020",
+            "idadefal": "86",
+            "causafal": "<CM>CID R-98</CM>"
+        },
+        {
+            "nomefalecido": "DIOGENES RAMALHO DE AMORIM",
+            "sexo": "M",
+            "datafal": "20191021",
+            "idadefal": "66",
+            "causafal": "<CM>MORTE SEM ASSISTÊNICA;</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO RIBEIRO DA SILVA",
+            "sexo": "M",
+            "datafal": "20191021",
+            "idadefal": "73",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "SEBASTIANA DA SILVA SABINO",
+            "sexo": "F",
+            "datafal": "20191024",
+            "idadefal": "85",
+            "causafal": "<CM>MORTE SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIO DE SOUZA CAVALCANTE",
+            "sexo": "M",
+            "datafal": "20191024",
+            "idadefal": "70",
+            "causafal": "<CM>R 98</CM><CM>CAUSAS MAL DEFINIDAS, R99;</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO DA SILVA CAVALCANTE",
+            "sexo": "M",
+            "datafal": "20191012",
+            "idadefal": "67",
+            "causafal": "<CM>SEPSE;</CM><CM>OSTEOMIELITE;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA DE NAZARÉ SANTOS DO NASCIMENTO",
+            "sexo": "F",
+            "datafal": "20191025",
+            "idadefal": "93",
+            "causafal": "<CM>HIPERTENSÃO PRIMÁRIA</CM><CM>DIABETES MELLITUS TIPO II</CM><CM>SENILIDADE</CM>"
+        },
+        {
+            "nomefalecido": "EDUARDO FELIPE DA SILVA",
+            "sexo": "M",
+            "datafal": "20191029",
+            "idadefal": "56",
+            "causafal": "<CM>CID: R- 98;</CM><CM>DIABÉTICO;</CM><CM>HISPERTENSO;</CM>"
+        },
+        {
+            "nomefalecido": "DIANA CASTRO DE OLIVEIRA",
+            "sexo": "F",
+            "datafal": "20191104",
+            "idadefal": "2",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA AGUDA</CM><CM>FALÊNCIA DE MULTIPLOS ÓRGÃOS</CM><CM>SEPSE</CM><CM>MITOCONDRIOPATIA</CM>"
+        },
+        {
+            "nomefalecido": "SEBASTIÃO LOPES",
+            "sexo": "M",
+            "datafal": "20191029",
+            "idadefal": "78",
+            "causafal": "<CM>FALÊNCIA MULTIPLA DE ÓRGÃOS;</CM><CM>INSUFICIÊNCIA RENAL CRÔNICA;</CM><CM>CÂNCER DE PRÓSTATA;</CM><CM>HEMORRAGIA;</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIO CHAVES LIMA",
+            "sexo": "M",
+            "datafal": "20191111",
+            "idadefal": "61",
+            "causafal": "<CM>CHOQUE SÉPTICO;</CM><CM>PENUMONIA NESOCOMIAL;</CM><CM>INSUFICIÊNCIA RENAL AGÚDA;</CM><CM>PÓS OPERATÓRIO TRANSPLANTE HEPÁTICO;</CM>"
+        },
+        {
+            "nomefalecido": "MARIA MADALENA RODRIGUES PINHEIRO",
+            "sexo": "F",
+            "datafal": "20191118",
+            "idadefal": "70",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATÓRIA AGÚDA;</CM><CM>SEPTICEMIA;</CM><CM>PNEUMONIA;</CM><CM>NEOPLASIA MALIGNA DAS COSTELAS;</CM>"
+        },
+        {
+            "nomefalecido": "ALBERTO ARAUJO NOBRE ",
+            "sexo": "M",
+            "datafal": "20191119",
+            "idadefal": "61",
+            "causafal": "<CM>DESCONHECIDA</CM>"
+        },
+        {
+            "nomefalecido": "MARTA ALTINA XAVIER",
+            "sexo": "F",
+            "datafal": "20191123",
+            "idadefal": "64",
+            "causafal": "<CM>INFARTO AGÚDO MIOCÁRDIO;</CM>"
+        },
+        {
+            "nomefalecido": "AGATHA VITÓRIA RODRIGUES PEREIRA",
+            "sexo": "F",
+            "datafal": "20191125",
+            "idadefal": "1",
+            "causafal": "<CM>CHOQUE CARDIOGÊNICO</CM><CM>ACIDOSE RESPIRATÓRIA</CM><CM>SINDROME DA ANGÚSTIA RESPIRATÓRIA AGUDA</CM><CM>BRONQUIOLITE</CM>"
+        },
+        {
+            "nomefalecido": "RAIMUNDO NONATO DE MENDONÇA",
+            "sexo": "M",
+            "datafal": "20191129",
+            "idadefal": "46",
+            "causafal": "<CM>SEPTICEMIA</CM><CM>PNEUMONIA GRAVE</CM><CM>TUBERCULOSE PULMONAR</CM><CM>DOÊNÇA PULMONAR OBSTRUTIVA CRÔNICA</CM>"
+        },
+        {
+            "nomefalecido": "NATAL KENNEDY LEOPOLDO DE SOUZA",
+            "sexo": "M",
+            "datafal": "20191201",
+            "idadefal": "41",
+            "causafal": "<CM>CHOQUE CARDIOGÊNICO; R 57;</CM><CM>INFARTO AGUDO DO MIOCÁRDIO; I 219;</CM><CM>HIPERTENSÃO ARTERIAL; I 10;</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ TEREZA DOS SANTOS",
+            "sexo": "M",
+            "datafal": "20191128",
+            "idadefal": "85",
+            "causafal": "<CM>SEM ASSISTÊNCIA;</CM>"
+        },
+        {
+            "nomefalecido": "JOÃO BEZERRA DA SILVA",
+            "sexo": "M",
+            "datafal": "20191119",
+            "idadefal": "97",
+            "causafal": "<CM>FALÊNCIA MULTIPLA DOS ORGÃOS</CM>"
+        },
+        {
+            "nomefalecido": "VALDIR GOMES DA ROCHA",
+            "sexo": "M",
+            "datafal": "20191204",
+            "idadefal": "18",
+            "causafal": "<CM>PARADA CARDIORESPIRATÓRIA</CM><CM>PNEUMONIA COMUNITÁRIA</CM><CM>INSUFIÊNCIA RENAL AGUDA</CM><CM>DESNUTRIÇÃO CRÔNICA</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO OSCAR PASSOS",
+            "sexo": "M",
+            "datafal": "20191206",
+            "idadefal": "77",
+            "causafal": "<CM>CHOQUE NEUROGÊNICO</CM><CM>ACIDENTE VASCULAR CEREBRAL</CM><CM>HIPERTENSÃO</CM>"
+        },
+        {
+            "nomefalecido": "JANDIRA SOUZA DOS SANTOS",
+            "sexo": "F",
+            "datafal": "20191206",
+            "idadefal": "84",
+            "causafal": "<CM>COMA</CM><CM>TCC</CM><CM>HAS</CM><CM>DIABETES</CM>"
+        },
+        {
+            "nomefalecido": "MANOEL FERREIRA DE PAIVA",
+            "sexo": "M",
+            "datafal": "20191208",
+            "idadefal": "87",
+            "causafal": "<CM>INSUF. CARDIO-RESPIRATORIA</CM><CM>AVC</CM><CM>HAS</CM>"
+        },
+        {
+            "nomefalecido": "SEBASTIÃO TEIXEIRA BASTOS",
+            "sexo": "M",
+            "datafal": "20191209",
+            "idadefal": "86",
+            "causafal": "<CM>Pr cardiorrespiratória;</CM><CM>Falência Múltipla de Órgãos;</CM><CM>Doença Obstrutiva Crônica;</CM>"
+        },
+        {
+            "nomefalecido": "JESSICA BRUNA D'AVILA MARQUES",
+            "sexo": "F",
+            "datafal": "20191207",
+            "idadefal": "22",
+            "causafal": "<CM>CHOQUE CARDIOGÊNICO;</CM><CM>PÓS OPERATÓRIO TROCA VALVAR MITRAL LIGADURA;</CM><CM>AURICULETA ESQUERDA;</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO MENDONÇA DE FRANÇA",
+            "sexo": "M",
+            "datafal": "20191208",
+            "idadefal": "76",
+            "causafal": "<CM>COMA</CM><CM>ICC</CM><CM>PNEUMONIA</CM><CM>HAS</CM>"
+        },
+        {
+            "nomefalecido": "MARIA BATISTA DA CUNHA",
+            "sexo": "M",
+            "datafal": "20191211",
+            "idadefal": "79",
+            "causafal": "<CM>INSUFICIÊNCIA RESPIRATORIA AGUDA</CM>"
+        },
+        {
+            "nomefalecido": "JOÃO SIMÕES DE SOUZA NETO",
+            "sexo": "M",
+            "datafal": "20191214",
+            "idadefal": "33",
+            "causafal": "<CM>TRAUMATISMO FACIAL E CRANEO ENCEFALICO</CM>"
+        },
+        {
+            "nomefalecido": "VITÓRIA LUIZA DE SOUZA FIGUEIREDO",
+            "sexo": "F",
+            "datafal": "20191213",
+            "idadefal": "9",
+            "causafal": "<CM>SEPSE GRAVE</CM><CM>PNEUMONIA GRAVE</CM><CM>SINDROME NEFROTICA CÓRLICA RESISTENTE</CM>"
+        },
+        {
+            "nomefalecido": "ANTONIO CORREIA DA SILVA",
+            "sexo": "M",
+            "datafal": "20191217",
+            "idadefal": "54",
+            "causafal": "<CM>PNEUMONIA</CM><CM>DPOC</CM><CM>PARALISIA CEREBRAL</CM>"
+        },
+        {
+            "nomefalecido": "JOSÉ SANTANA FILHO",
+            "sexo": "M",
+            "datafal": "20191211",
+            "idadefal": "54",
+            "causafal": "<CM>DESCONHECIDO</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCO ELIAS DA SILVA",
+            "sexo": "M",
+            "datafal": "20191221",
+            "idadefal": "86",
+            "causafal": "<CM>PARADA CARDIORRESPIRATÓRIA</CM><CM>FALÊNCIA MULTIPLA DOS ORGÃOS</CM>"
+        },
+        {
+            "nomefalecido": "MARIA CARDOSO FERREIRA",
+            "sexo": "F",
+            "datafal": "20191220",
+            "idadefal": "59",
+            "causafal": "<CM>R-98</CM>"
+        },
+        {
+            "nomefalecido": "ANTÔNIA GORETE VIEIRA RIBEIRO",
+            "sexo": "F",
+            "datafal": "20191221",
+            "idadefal": "53",
+            "causafal": "<CM>DOENÇA PULMONAR OBSTRUTIVA CRÔNICA</CM><CM>ANEMIA NORMACÍTICA</CM><CM>C. A. PULMONAR</CM>"
+        },
+        {
+            "nomefalecido": "MANOEL MARQUES DA SILVA",
+            "sexo": "M",
+            "datafal": "20191227",
+            "idadefal": "101",
+            "causafal": "<CM>MARTE SUBITA SEM ASSISTÊNCIA</CM>"
+        },
+        {
+            "nomefalecido": "MARIA SOUZA DA ROCHA",
+            "sexo": "F",
+            "datafal": "20191230",
+            "idadefal": "15",
+            "causafal": "<CM>PNEUMONIA</CM><CM>ANEMIA NORMOCÍTICA</CM><CM>PARALISIA CEREBRAL</CM>"
+        },
+        {
+            "nomefalecido": "VITORIANO ZACARIAS DE LIMA",
+            "sexo": "M",
+            "datafal": "20191231",
+            "idadefal": "66",
+            "causafal": "<CM>CHOQUE SEPTICO</CM><CM>SEPSE DE FOCO PULMONAR</CM><CM>PNEUMONIA ADQUIRIDA NA COMUNIDADE</CM><CM>DPOC</CM>"
+        },
+        {
+            "nomefalecido": "MARIA FERREIRA MACIEL",
+            "sexo": "F",
+            "datafal": "20191224",
+            "idadefal": "75",
+            "causafal": "<CM>CAUSA DESCONHECIDA</CM>"
+        },
+        {
+            "nomefalecido": "MARIA ALZIRA FERREIRA DE PAIVA",
+            "sexo": "F",
+            "datafal": "20191223",
+            "idadefal": "66",
+            "causafal": "<CM>CHOQUE SEPTICO</CM><CM>INSUFICIÊNCIA RENAL AGUDA</CM><CM>PNEUMONIA NOSOCOMIAL</CM><CM>ACIDENTE VASCULAR CEREBRAL ISQUÊMICO</CM>"
+        },
+        {
+            "nomefalecido": "FRANCISCA DE OLIVEIRA DA SILVA",
+            "sexo": "F",
+            "datafal": "20191228",
+            "idadefal": "81",
+            "causafal": "<CM>INSUFICIÊNCIA CARDIO RESPIRATÓRIA</CM><CM>ICC</CM><CM>HAS</CM>"
+        },
+        {
+            "nomefalecido": "AMANDA PAIVA CAVALCANTE",
+            "sexo": "F",
+            "datafal": "20191224",
+            "idadefal": "14",
+            "causafal": "<CM>CHOQUE HIPOVOLEMICO</CM><CM>TRAUMATISMO CRÂNIOENCEFÁLICO</CM><CM>ESGOTAMENTO</CM><CM>FERIMENTO CORTO CONTUSO</CM>"
+        }
+    ]
