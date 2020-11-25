@@ -2,6 +2,8 @@ import json
 from flask import render_template, request, redirect, Blueprint
 from app import db
 
+from src.models import DepositoPrevio, ServicoPrevio, Usuario
+
 # from caixa import CaixaDiario, depositoPrevio, servicoPrevio
 from banco import *
 
@@ -80,7 +82,7 @@ bp_app = Blueprint('bp_app', __name__)
 #     registro_nome.clear()
 #     nome = request.form['nome_sql']
 #     nome_maiusculo = nome.upper()
-#     # registro_nome.append(busca_nome_bd(nome_maiusculo))
+#     registro_nome.append(busca_nome_bd(nome_maiusculo))
 
 
 #     return redirect('/nascimento')
@@ -138,15 +140,15 @@ bp_app = Blueprint('bp_app', __name__)
 #     return redirect('/servico')
 
 
-# @bp_app.route('/previo')
-# def previo():
+@bp_app.route('/previo')
+def previo():
 
-#     # all_depositos_previos = busca_deposito()
-#     for i in all_depositos_previos:
-#         print(i.cod_deposito)
+    all_depositos_previos = DepositoPrevio.query.all()
+
+    lista = [deposito for deposito in all_depositos_previos]
 
 
-#     return render_template('cadastro_deposito_previo.html',depositoGlobal= all_depositos_previos,servico =lista)
+    return render_template('cadastro_deposito_previo.html', depositoGlobal=lista, servico =lista)
 
 
 # @bp_app.route('/carrega_servicos' ,methods=['GET', 'POST'])
