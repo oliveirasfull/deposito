@@ -131,13 +131,13 @@ def caixaDoDia():
     lista.append(caixa)
   
     return redirect('/servico')
+
+
 @app.route('/previo')
 def previo():
     
     all_depositos_previos = busca_deposito()
-    for i in all_depositos_previos:
-        print(i.cod_deposito)
-
+  
     
     return render_template('cadastro_deposito_previo.html',depositoGlobal= all_depositos_previos,servico =lista)
 
@@ -187,27 +187,7 @@ def deposito_previo():
 
 
 
-@app.route('/servicoPrevio/<cod>', methods=['GET','POST'])
-def servico_previ0(cod):
-    from datetime import datetime
-    from random import randint
-    data_e_hora_atuais = datetime.now()
-    ale2 =randint(100,200)
-    lista_servico=None
-    data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y')
-    codigo = cod 
-    servico_previo = request.form['servico_previo']
-    valor_servico = request.form['valor_servico']
 
-    for out in all_depositos_previos:
-        for deposito in all_servicos_previos:
-            if deposito.cod_deposito == codigo:
-                lista_servico = servicoPrevio(deposito.cod_deposito,ale2,servico_previo,data_e_hora_atuais,None,user,None,False,valor_servico,deposito.cpf_solicitante,deposito.nome_solicitante,deposito.tipo_documento,deposito.criador,data_e_hora_em_texto)
-                break
-            all_servicos_previos.append(lista_servico)
-   
-
-    return redirect ('/previo')
     
 
     
@@ -226,14 +206,34 @@ def registro(cod):
         if i.cod_deposito == codigo:
             deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
             lista_doida.append(deposito_serv)
-
-   
-            
-
-
-  
    
     return render_template('registro_servico.html',teste=cod, deposito = lista_doida)
+
+
+
+
+@app.route('/servicoPrevio/<cod>', methods=['GET','POST'])
+def servico_previ0(cod):
+    from datetime import datetime
+    from random import randint
+    data_e_hora_atuais = datetime.now()
+    ale2 =randint(100,200)
+    lista_servico=None
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y')
+    codigo = cod 
+    servico_previo = request.form['servico_previo']
+    valor_servico = request.form['valor_servico']
+
+ 
+   
+
+    return redirect ('/previo')
+
+
+
+
+
+
 
 
 

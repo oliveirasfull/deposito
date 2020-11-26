@@ -31,6 +31,6 @@ class servicoPrevio(depositoPrevio):
         self.user_fim = user_fim
         self.realizacao = realizacao
         self.valor = valor
-
+        self.cod_deposito = cod_deposito
       
         

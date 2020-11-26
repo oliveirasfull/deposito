@@ -1,11 +1,13 @@
 import mysql.connector
 from caixa import CaixaDiario, depositoPrevio, servicoPrevio
 
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="root",
-  database="CartorioDP"
+  database="CartorioDP",
+  autocommit=True
 )
 
 mycursor = mydb.cursor()
@@ -22,7 +24,8 @@ def login_bd(nome,senha):
 
 
 def busca_nome_bd(nome_busca):
-
+   
+    
     #sql = ("SELECT nomecrianca, DATE_FORMAT(datanasc,'%d-%m-%Y') AS datanascimento,  DATE_FORMAT(dataregistro,'%d-%m-%Y') AS dataDecla,livro,letra,folha,termo FROM nascimentos LIMIT 5")
     sql= ("SELECT * FROM nascimentos")
     mycursor.execute(sql)
@@ -36,7 +39,7 @@ def busca_nome_bd(nome_busca):
         if nome_busca in x[7]:
            
             lista_nomes.append(x)
-           
+    
     return lista_nomes
 
 
