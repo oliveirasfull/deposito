@@ -62,10 +62,13 @@ def busca_deposito():
         
     return lista_0
 
-def cadastra_deposito():
-        
+def cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user):
+        #insert into deposito_previo(cpf,nome_solicitante,tipo_documento,criador,data_criacao,telefone,Usuario_idUsuario) values(' 025-762-354-62  ','LETICIA MARREIRO','TESTE DE REGISTRO COM DIRCE','Dirce','2020-11-26',null,2);
+        sql = "INSERT INTO deposito_previo (cpf,nome_solicitante,tipo_documento,criador,data_criacao,telefone,Usuario_idUsuario) VALUES (%s, %s,%s, %s,%s, %s,%s)"
+        val = (cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user)
         #insert into deposito_previo(criador,tipo_documento,cpf,data_criação,horario,Usuario_idUsuario) values ('Lucas','ESCRITURA PUBLICA DE COMPRA E VENDA','025-753-123.69','2020-11-23',null,1);
-        pass
+        mycursor.execute(sql, val)
+        print(mycursor.rowcount, "record inserted.")
 def busca_servico():
     sql= ("SELECT * FROM servico_previo")
     mycursor.execute(sql)

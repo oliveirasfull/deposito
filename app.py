@@ -166,18 +166,20 @@ def deposito_previo():
     criador = request.form['criador']
     telefone = request.form['telefone_solicitante']
 
-    ale =randint(2,100)
+    #ale =randint(2,100)
     ale2 =randint(100,200)
 
     data_e_hora_atuais = datetime.now()
-    data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y')
-    deposito = depositoPrevio(ale,cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,user)
-
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
+    if criador == "Joao Paulo":
+        id_user = 3
+    if criador == "Dirce":
+        id_user = 2
+    if criador == "Gabriel":
+        id_user = 5
     
     
-
-    
-    all_depositos_previos.append(deposito)
+    cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user)
 
   
 
