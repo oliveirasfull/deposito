@@ -15,8 +15,8 @@ class depositoPrevio(object):
         self.nome_solicitante = nome_solicitante
         self.tipo_documento = tipo_documento
         self.criador = criador
-        self.data_criacao = data_criacao,
-        self.telefone = telefone,
+        self.data_criacao = data_criacao
+        self.telefone = telefone
         self.usuario = usuario
       
 class servicoPrevio(depositoPrevio): 

@@ -121,6 +121,7 @@ def caixaDoDia():
     cpf = request.form['cpf']
     valor = request.form['valor']
     servico = request.form['servico']
+
     ale =randint(2,100)
     
     data_e_hora_atuais = datetime.now()
@@ -163,12 +164,14 @@ def deposito_previo():
     nome = request.form['nome_solicitante']
     tipo_documento = request.form['tipo_documento']
     criador = request.form['criador']
+    telefone = request.form['telefone_solicitante']
+
     ale =randint(2,100)
     ale2 =randint(100,200)
 
     data_e_hora_atuais = datetime.now()
     data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y')
-    deposito = depositoPrevio(ale,cpf,nome,tipo_documento,criador,data_e_hora_em_texto)
+    deposito = depositoPrevio(ale,cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,user)
 
     
     
@@ -214,12 +217,23 @@ def servico_previ0(cod):
 
 @app.route('/registro/<cod>', methods=['POST'])
 def registro(cod):
+    codigo = int(cod)
+    
+    lista_doida = []
+    all_depositos_previos = busca_deposito()
+
+    for i in all_depositos_previos:
+        if i.cod_deposito == codigo:
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
+            lista_doida.append(deposito_serv)
+
    
+            
 
 
   
    
-    return render_template('registro_servico.html',teste=cod)
+    return render_template('registro_servico.html',teste=cod, deposito = lista_doida)
 
 
 

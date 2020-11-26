@@ -5,11 +5,12 @@
         </h6>
 
     </div>
-    <h1>
+    <h1>{%for i in deposito%}
         <h1>
-            {{teste}}
+        {{i.cod_deposito}}
+        {{i.nome_solicitante}}
         </h1>
-
+{%endfor%}
 
 
 </div>

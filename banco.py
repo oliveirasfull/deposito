@@ -56,6 +56,7 @@ def busca_deposito():
         depositos = depositoPrevio(lista_depositos.cod_deposito,lista_depositos.cpf_solicitante,lista_depositos.nome_solicitante,lista_depositos.tipo_documento,lista_depositos.criador,lista_depositos.data_criacao,lista_depositos.telefone,lista_depositos.usuario)
         
         lista_0.append(depositos)
+        
     return lista_0
 
 def cadastra_deposito():
