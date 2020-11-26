@@ -18,7 +18,7 @@ user = 'Paulo'
 
 #all_depositos_previos = [lista_deposito_previo, lista_deposito_previo1]
 all_depositos_previos = []
-
+all_servicos_previos = []
 #lista_servico_previo = servicoPrevio('1','102','PROTOCOLO PARA TESTE 1 VIA ','29/07/2020 12:49','10/08/2020 12:49',user,None,False,22.12,lista_deposito_previo.cpf_solicitante,lista_deposito_previo.nome_solicitante,lista_deposito_previo.tipo_documento,lista_deposito_previo.criador,'29/07/2020 12:49')
 
 #lista_servico_previo0 = servicoPrevio('1','100','PROTOCOLO PARA TESTE 2 VIA ','29/07/2020 12:49','10/08/2020 12:49',user,None,False,22.12,lista_deposito_previo.cpf_solicitante,lista_deposito_previo.nome_solicitante,lista_deposito_previo.tipo_documento,lista_deposito_previo.criador,'29/07/2020 12:49')
@@ -197,17 +197,35 @@ def deposito_previo():
 
 @app.route('/registro/<cod>', methods=['POST'])
 def registro(cod):
+    total = 0
+    servico_realizado = 0
+    servico_aberto = 0
     codigo = int(cod)
-    
+    lista_servicos =[]
     lista_doida = []
     all_depositos_previos = busca_deposito()
-
+    all_servicos_previos = busca_servico()
     for i in all_depositos_previos:
         if i.cod_deposito == codigo:
             deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
             lista_doida.append(deposito_serv)
+
+
+    
+    for j in all_servicos_previos:
+        if j.cod_deposito == codigo:
+            servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor)
+
+            lista_servicos.append(servicos)
+
+            if j.realizacao == 0:
+                
+                servico_aberto = j.valor + servico_aberto
+            if j.realizacao == 1:
+                servico_realizado = j.valor + servico_realizado
+    total = servico_realizado+servico_aberto
    
-    return render_template('registro_servico.html',teste=cod, deposito = lista_doida)
+    return render_template('registro_servico.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
 
 
 

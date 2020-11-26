@@ -20,9 +20,7 @@ class depositoPrevio(object):
         self.usuario = usuario
       
 class servicoPrevio(depositoPrevio): 
-    def __init__(self,cod_deposito,cod_servico,descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizacao,valor,
-                cpf_solicitante,nome_solicitante,tipo_documento,criador,data_criacao):
-        super().__init__(cod_deposito,cpf_solicitante,nome_solicitante,tipo_documento,criador,data_criacao)
+    def __init__(self,cod_deposito,cod_servico,descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizacao,valor):
         self.cod_servico = cod_servico
         self.descricao_servico = descricao_servico
         self.data_registro = data_registro

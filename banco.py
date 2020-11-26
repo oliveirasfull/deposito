@@ -66,6 +66,21 @@ def cadastra_deposito():
         
         #insert into deposito_previo(criador,tipo_documento,cpf,data_criação,horario,Usuario_idUsuario) values ('Lucas','ESCRITURA PUBLICA DE COMPRA E VENDA','025-753-123.69','2020-11-23',null,1);
         pass
+def busca_servico():
+    sql= ("SELECT * FROM servico_previo")
+    mycursor.execute(sql)
+    lista_servicos =[]
+    servicos = []
+    servico_0 =[]
+
+    myresult = mycursor.fetchall()
+
+    for x in myresult:
+        lista_servicos = servicoPrevio(x[8],x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
+        servicos = servicoPrevio(lista_servicos.cod_deposito,lista_servicos.cod_servico,lista_servicos.descricao_servico,lista_servicos.data_registro,lista_servicos.data_entrega,lista_servicos.user_inicio,lista_servicos.user_fim,lista_servicos.realizacao,lista_servicos.valor)
+        servico_0.append(servicos)
+    return servico_0
+
 
 
 
