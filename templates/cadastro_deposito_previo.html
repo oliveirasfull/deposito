@@ -166,139 +166,59 @@
     }
 </style>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="dados" ">VISUALIZAR DADOS</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="dados" ">CADASTRAR</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg ">
         <div class="modal-content ">
-            <form name="servico1" action="/depositoPrevio" method="post">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="nome ">CPF do Apresentante</label>
-                        <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar( '###.###.###-##', this)" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="servico">Nome do Apresentante</label>
-                        <input type="text" id="servico" name="nome_solicitante" required class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="servico ">Tipo de Documento</label>
-                        <input type="text" id="documento" name="tipo_documento" required class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <fieldset>
-                            <legend> Escolha seus Titular</legend>
-                            <form>
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Gabriel"> Gabriel
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Natacha"> Natacha
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Joao Paulo"> Joao Paulo
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Dirce"> Dirce
-
-
-                            </form>
+                <form name="servico1" action="/depositoPrevio" method="post">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="nome ">CPF do Apresentante</label>
+                            <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar( '###.###.###-##', this)" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Nome do Apresentante</label>
+                            <input type="text" id="servico" name="nome_solicitante"OnKeyPress="formatar( '(##)#####-####', this)" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Telefone do Apresentante</label>
+                            <input type="text" id="telefone" name="telefone_solicitante" maxlength="11"required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico ">Tipo de Documento</label>
+                            <input type="text" id="documento" name="tipo_documento" required class="form-control">
+                        </div>
+    
+                        <div class="form-group">
+                            <fieldset>
+                                <legend> Escolha seus Titular</legend>
+                                <form>
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Gabriel"> Gabriel
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Natacha"> Natacha
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Joao Paulo"> Joao Paulo
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Dirce"> Dirce
+    
+    
+                                </form>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                                <button type="submmit" class="btn btn-primary">SALVAR</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
+                              </div>
+                    
+                    
                         </fieldset>
-                    </div>
-              
-            
 
-           
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
-              
-             </fieldset>
-        </form>  
+          
         </div>
     </div>
 </div>
 
- <form name="servico1" action="/depositoPrevio" method="post">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="nome ">CPF do Apresentante</label>
-                        <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar( '###.###.###-##', this)" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="servico">Nome do Apresentante</label>
-                        <input type="text" id="servico" name="nome_solicitante"OnKeyPress="formatar( '(##)#####-####', this)" required class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="servico">Telefone do Apresentante</label>
-                        <input type="text" id="telefone" name="telefone_solicitante" maxlength="11"required class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="servico ">Tipo de Documento</label>
-                        <input type="text" id="documento" name="tipo_documento" required class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <fieldset>
-                            <legend> Escolha seus Titular</legend>
-                            <form>
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Gabriel"> Gabriel
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Natacha"> Natacha
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Joao Paulo"> Joao Paulo
-                                <INPUT TYPE="RADIO" NAME="criador" VALUE="Dirce"> Dirce
-
-
-                            </form>
-                        </fieldset>
-                    </div>
-                     <button type="submit"  class="btn btn-primary btn-salvar">Salvar</button>
-                </fieldset>
-        <!---
-        </form>  
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tabela de Registro de depositos
-                </h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>CPF</th>
-                                <th>Nome</th>
-        
-                                <th>Documento</th>
-        
-                                <th>Data</th>
-                             
-        
-                            </tr>
-                        </thead>
-                       
-                        {%for deposito in depositoGlobal%}
-                        <tbody>
-                            <tr>
-                                <td>{{deposito.cod_deposito}}</td>
-                                <td>{{deposito.cpf_solicitante}}</td>
-                                <td>{{deposito.nome_solicitante}}</td>
-                                <td>{{deposito.tipo_documento}}</td>
-                                <td>{{deposito.data_criacao}}</td>
-                                
-                              
-                                <td>
-                                    <form method="post" action="/registro/{{deposito.cod_deposito}}">
-                    
-                                            <button type="submit"></button>
-                                    </form>
-                               
-                            </tr>
-                         </tbody>
-                        {%endfor%}  
-                    </table>
-                   
-                </div>
-            </div>
-        </div> -->
-
-
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tabela de informaçoes
+                <h6 class="m-0 font-weight-bold text-primary">Registro de depositos previso
                 </h6>
             </div>
             <div class="card-body">
