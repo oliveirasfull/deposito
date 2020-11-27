@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request, redirect
+from flask import Flask, render_template,request, redirect, url_for
 import json
 
 from caixa import CaixaDiario, depositoPrevio, servicoPrevio
@@ -17,8 +17,8 @@ user = 'Paulo'
 #lista_deposito_previo1 = depositoPrevio('2','321.654.963-00','MARCELO ALGUNTO CAVOLCANTE','BAIXA/CANCELAMENTO DE CDULA DE CREDITO N° 5043',None,'13/11/2020',None,user)
 
 #all_depositos_previos = [lista_deposito_previo, lista_deposito_previo1]
-all_depositos_previos = []
-all_servicos_previos = []
+all_depositos_previos = busca_deposito()
+all_servicos_previos = busca_servico()
 #lista_servico_previo = servicoPrevio('1','102','PROTOCOLO PARA TESTE 1 VIA ','29/07/2020 12:49','10/08/2020 12:49',user,None,False,22.12,lista_deposito_previo.cpf_solicitante,lista_deposito_previo.nome_solicitante,lista_deposito_previo.tipo_documento,lista_deposito_previo.criador,'29/07/2020 12:49')
 
 #lista_servico_previo0 = servicoPrevio('1','100','PROTOCOLO PARA TESTE 2 VIA ','29/07/2020 12:49','10/08/2020 12:49',user,None,False,22.12,lista_deposito_previo.cpf_solicitante,lista_deposito_previo.nome_solicitante,lista_deposito_previo.tipo_documento,lista_deposito_previo.criador,'29/07/2020 12:49')
@@ -135,11 +135,14 @@ def caixaDoDia():
 
 @app.route('/previo')
 def previo():
-    
+    deposito_com_servico_aberto1 =[]
     all_depositos_previos = busca_deposito()
-  
+    deposito_com_servico_aberto = lista_de_depositos_com_servico_aberto()
+    for i in deposito_com_servico_aberto:
+        deposito_com_servico_aberto1.append(i[0])
+        
     
-    return render_template('cadastro_deposito_previo.html',depositoGlobal= all_depositos_previos,servico =lista)
+    return render_template('cadastro_deposito_previo.html',depositoGlobal= all_depositos_previos,servico =lista,servico_ativo = deposito_com_servico_aberto1)
 
 
 @app.route('/carrega_servicos' ,methods=['GET', 'POST'])
@@ -197,16 +200,23 @@ def deposito_previo():
 
     
 
-@app.route('/registro/<cod>', methods=['POST'])
+@app.route('/registro/<cod>', methods=['GET','POST'])
 def registro(cod):
     total = 0
     servico_realizado = 0
     servico_aberto = 0
+    
     codigo = int(cod)
     lista_servicos =[]
     lista_doida = []
+    
+
+
+
     all_depositos_previos = busca_deposito()
     all_servicos_previos = busca_servico()
+
+
     for i in all_depositos_previos:
         if i.cod_deposito == codigo:
             deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
@@ -226,6 +236,15 @@ def registro(cod):
             if j.realizacao == 1:
                 servico_realizado = j.valor + servico_realizado
     total = servico_realizado+servico_aberto
+
+  
+    #valor_servico1 = request.form['valor_servico']
+    
+
+
+
+
+    
    
     return render_template('registro_servico.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
 
@@ -236,19 +255,37 @@ def registro(cod):
 def servico_previ0(cod):
     from datetime import datetime
     from random import randint
+    all_depositos_previos = busca_deposito()
+    all_servicos_previos = busca_servico()
     data_e_hora_atuais = datetime.now()
     ale2 =randint(100,200)
     lista_servico=None
-    data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y')
-    codigo = cod 
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
+    codigo = int(cod)
+    data_entrega = None
+    user_fim = None
+    realizado = 0
     servico_previo = request.form['servico_previo']
     valor_servico = request.form['valor_servico']
+    servico_previo_maiunsculo = servico_previo.upper()
+    for i in all_depositos_previos:
+        if i.cod_deposito == codigo:
+            cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,i.criador,user_fim,realizado,valor_servico,codigo)
+             
+                #cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,j.criador,user_fim,realizado,valor_servico,i.cod_deposito)
 
- 
-   
+    return redirect (url_for('registro',cod=cod))
 
-    return redirect ('/previo')
+@app.route('/atualiza/<ist>/<cod>', methods=['GET','POST'])
+def atualiza_servico(ist,cod):
+    print(cod)
+    print(ist)
 
+    atualizar_servico(cod)
+
+
+
+    return redirect (url_for('registro',cod=ist))
 
 
 
@@ -273,9 +310,11 @@ def card():
 @app.route('/depositoPrevioTotal')
 def DepositoPrevio():
     
-    pendente = 52000
+    pendente = servicos_abertos()
+    for i in pendente:
+        pendente1= i[0]
     
-    return render_template('deposito_previo.html',pendente=pendente,caixa=32000,progresso=50)
+    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,progresso=50)
           
 
 if __name__ == '__main__':

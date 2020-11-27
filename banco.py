@@ -44,7 +44,8 @@ def busca_nome_bd(nome_busca):
 
 
 def busca_deposito():
-    sql= ("SELECT * FROM deposito_previo")
+    #sql= ("SELECT deposito_previo.iddeposito_previo,deposito_previo.cpf,deposito_previo.nome_solicitante,deposito_previo.tipo_documento,deposito_previo.criador,deposito_previo.data_criacao,deposito_previo.telefone,deposito_previo.Usuario_idUsuario FROM servico_previo,deposito_previo where servico_previo.deposito_previo_iddeposito_previo = deposito_previo.iddeposito_previo AND realizado =0")
+    sql = ("SELECT * FROM deposito_previo")
     mycursor.execute(sql)
 
     lista_depositos=[]
@@ -82,7 +83,40 @@ def busca_servico():
         lista_servicos = servicoPrevio(x[8],x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
         servicos = servicoPrevio(lista_servicos.cod_deposito,lista_servicos.cod_servico,lista_servicos.descricao_servico,lista_servicos.data_registro,lista_servicos.data_entrega,lista_servicos.user_inicio,lista_servicos.user_fim,lista_servicos.realizacao,lista_servicos.valor)
         servico_0.append(servicos)
+        
     return servico_0
+def cadastro_servico(descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo):
+        sql = "INSERT INTO servico_previo (descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo) VALUES (%s, %s,%s, %s,%s, %s,%s,%s)"
+        
+        val = (descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo)
+        mycursor.execute(sql, val)
+        print(mycursor.rowcount, "record inserted.")
+        
+
+def atualizar_servico(cod):
+        sql = "UPDATE servico_previo SET realizado = %s WHERE idservico_previo = %s"
+        val = ("1", cod)
+        mycursor.execute(sql, val)
+        print(mycursor.rowcount, "record inserted.")
+
+def servicos_abertos():
+        sql = "SELECT SUM(VALOR) FROM servico_previo WHERE realizado = 0"
+        
+        mycursor.execute(sql)
+        myresult = mycursor.fetchall()
+
+        return myresult
+
+
+def lista_de_depositos_com_servico_aberto():
+        sql = "SELECT deposito_previo_iddeposito_previo from servico_previo where realizado =0 group by deposito_previo_iddeposito_previo"
+        lista_aberta =[]
+        mycursor.execute(sql)
+        myresult = mycursor.fetchall()
+        
+        return myresult
+
+       
 
 
 
