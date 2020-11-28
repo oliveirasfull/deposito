@@ -24,28 +24,30 @@ def login_bd(nome,senha):
 
 
 def busca_nome_bd(nome_busca):
+        
    
     
     #sql = ("SELECT nomecrianca, DATE_FORMAT(datanasc,'%d-%m-%Y') AS datanascimento,  DATE_FORMAT(dataregistro,'%d-%m-%Y') AS dataDecla,livro,letra,folha,termo FROM nascimentos LIMIT 5")
-    sql= ("SELECT * FROM nascimentos")
-    mycursor.execute(sql)
-    
-    lista_nomes=[]
-    myresult = mycursor.fetchall()
-    
-    for x in myresult:
-      
-     
-        if nome_busca in x[7]:
-           
-            lista_nomes.append(x)
-    
-    return lista_nomes
+        sql= ("SELECT * FROM nascimentos WHERE nomecrianca LIKE '%' %s '%'")
+        teste = (nome_busca,)
+        mycursor.execute(sql,teste)
+        
+        lista_nomes=[]
+        myresult = mycursor.fetchall()
+        
+        for x in myresult:
+            
+            
+            if nome_busca in x[7]:
+                
+                lista_nomes.append(x)
+        
+        return lista_nomes
 
 
 def busca_deposito():
     #sql= ("SELECT deposito_previo.iddeposito_previo,deposito_previo.cpf,deposito_previo.nome_solicitante,deposito_previo.tipo_documento,deposito_previo.criador,deposito_previo.data_criacao,deposito_previo.telefone,deposito_previo.Usuario_idUsuario FROM servico_previo,deposito_previo where servico_previo.deposito_previo_iddeposito_previo = deposito_previo.iddeposito_previo AND realizado =0")
-    sql = ("SELECT * FROM deposito_previo")
+    sql = ("SELECT * FROM deposito_previo LIMIT 300")
     mycursor.execute(sql)
 
     lista_depositos=[]
@@ -63,6 +65,8 @@ def busca_deposito():
         
     return lista_0
 
+
+
 def cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user):
         #insert into deposito_previo(cpf,nome_solicitante,tipo_documento,criador,data_criacao,telefone,Usuario_idUsuario) values(' 025-762-354-62  ','LETICIA MARREIRO','TESTE DE REGISTRO COM DIRCE','Dirce','2020-11-26',null,2);
         sql = "INSERT INTO deposito_previo (cpf,nome_solicitante,tipo_documento,criador,data_criacao,telefone,Usuario_idUsuario) VALUES (%s, %s,%s, %s,%s, %s,%s)"
@@ -70,21 +74,20 @@ def cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telef
         #insert into deposito_previo(criador,tipo_documento,cpf,data_criação,horario,Usuario_idUsuario) values ('Lucas','ESCRITURA PUBLICA DE COMPRA E VENDA','025-753-123.69','2020-11-23',null,1);
         mycursor.execute(sql, val)
         print(mycursor.rowcount, "record inserted.")
-def busca_servico():
-    sql= ("SELECT * FROM servico_previo")
-    mycursor.execute(sql)
-    lista_servicos =[]
-    servicos = []
-    servico_0 =[]
-
-    myresult = mycursor.fetchall()
-
-    for x in myresult:
-        lista_servicos = servicoPrevio(x[8],x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
-        servicos = servicoPrevio(lista_servicos.cod_deposito,lista_servicos.cod_servico,lista_servicos.descricao_servico,lista_servicos.data_registro,lista_servicos.data_entrega,lista_servicos.user_inicio,lista_servicos.user_fim,lista_servicos.realizacao,lista_servicos.valor)
-        servico_0.append(servicos)
+def busca_servico(codigo):
+        sql= "SELECT * FROM servico_previo WHERE deposito_previo_iddeposito_previo = %s"
+        teste = (codigo,)
+        mycursor.execute(sql,teste)
+        lista_servicos =[]
+        servicos = []
+        servico_0 =[]   
+        myresult = mycursor.fetchall()  
+        for x in myresult:
+            lista_servicos = servicoPrevio(x[8],x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
+            servicos = servicoPrevio(lista_servicos.cod_deposito,lista_servicos.cod_servico,lista_servicos.descricao_servico,lista_servicos.data_registro,lista_servicos.data_entrega,lista_servicos.user_inicio,lista_servicos.user_fim,lista_servicos.realizacao,lista_servicos.valor)
+            servico_0.append(servicos)
         
-    return servico_0
+        return servico_0
 def cadastro_servico(descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo):
         sql = "INSERT INTO servico_previo (descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo) VALUES (%s, %s,%s, %s,%s, %s,%s,%s)"
         
@@ -97,7 +100,7 @@ def atualizar_servico(cod):
         sql = "UPDATE servico_previo SET realizado = %s WHERE idservico_previo = %s"
         val = ("1", cod)
         mycursor.execute(sql, val)
-        print(mycursor.rowcount, "record inserted.")
+        
 
 def servicos_abertos():
         sql = "SELECT SUM(VALOR) FROM servico_previo WHERE realizado = 0"
@@ -115,6 +118,18 @@ def lista_de_depositos_com_servico_aberto():
         myresult = mycursor.fetchall()
         
         return myresult
+def qtd_servicos_abertos():
+        sql= 'SELECT count(*) FROM servico_previo WHERE realizado = 0'
+        mycursor.execute(sql)
+        myresult = mycursor.fetchall()
+        for i in myresult:
+                valor = i[0]
+
+        return valor
+
+print(qtd_servicos_abertos())
+
+
 
        
 

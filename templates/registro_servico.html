@@ -4,10 +4,26 @@
   document.getElementById("decimal").addEventListener("change", function(){
     this.value = parseFloat(this.value).toFixed(2);
  });
+ function valida() {
+   console.log("teste")
+  if ((servico.servico_previo.value == "") && (servico.valor_servico.value == "") ) {
+
+    alert("Campos obrigatórios faltando!");
+    servico1.valor_servico.focus();
+    servico1.servico_previo.focus();
+     
+    return false;
+  }
+}
 </script>
-
-   
-
+<form action="/previo">
+<button type="submmit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">VOLTAR
+<svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+</svg>
+</button>
+</form>
    {%for i in deposito%}
             <table >
                 
@@ -45,15 +61,15 @@
 
   
 
-      <form action="/servicoPrevio/{{teste}}" method="post">
+      <form name="servico" action="/servicoPrevio/{{teste}}" method="post">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="previo">Tipo de servico</label>
-            <input type="text" class="form-control" id="nome" name="servico_previo" placeholder="Serviço">
+            <input type="text" class="form-control" id="nome" name="servico_previo" placeholder="DIGITE O SERVIÇO">
           </div>
           <div class="form-group col-md-6">
             <label for="previo">valor</label>
-            <input type="number" class="form-control" id="decimal" name="valor_servico" step="0.010" placeholder="Valor">
+            <input type="number" class="form-control" id="decimal" name="valor_servico" step="0.010" placeholder="DIGITE O VALOR DO SERVIÇO">
           </div>
           <div class="form-group col-md-6">
             <button type="submmit" class="btn btn-primary">SALVAR</button>
@@ -79,17 +95,17 @@
                       <th>Descrição do serviço</th>
                       <th>data de registro</th>
                       <th>Valor</th>
-                      <th>Botao</th>
+                      <th>Realizar Servico</th>
                    
 
                   </tr>
               </thead>
               <tfoot>
                 <tr>
-                    <th>TOTAL : {{total}}</th>
+                   <th>REALIZADO : {{servico_realizado}}</th>
                     <th>EM ABERTO: {{servico_aberto}}</th>
-                    <th>REALIZADO : {{servico_realizado}}</th>
-              
+                    
+               <th>TOTAL : {{total}}</th>
 
                 </tr>
             </tfoot>

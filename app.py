@@ -18,7 +18,7 @@ user = 'Paulo'
 
 #all_depositos_previos = [lista_deposito_previo, lista_deposito_previo1]
 all_depositos_previos = busca_deposito()
-all_servicos_previos = busca_servico()
+
 #lista_servico_previo = servicoPrevio('1','102','PROTOCOLO PARA TESTE 1 VIA ','29/07/2020 12:49','10/08/2020 12:49',user,None,False,22.12,lista_deposito_previo.cpf_solicitante,lista_deposito_previo.nome_solicitante,lista_deposito_previo.tipo_documento,lista_deposito_previo.criador,'29/07/2020 12:49')
 
 #lista_servico_previo0 = servicoPrevio('1','100','PROTOCOLO PARA TESTE 2 VIA ','29/07/2020 12:49','10/08/2020 12:49',user,None,False,22.12,lista_deposito_previo.cpf_solicitante,lista_deposito_previo.nome_solicitante,lista_deposito_previo.tipo_documento,lista_deposito_previo.criador,'29/07/2020 12:49')
@@ -214,7 +214,7 @@ def registro(cod):
 
 
     all_depositos_previos = busca_deposito()
-    all_servicos_previos = busca_servico()
+    all_servicos_previos = busca_servico(codigo)
 
 
     for i in all_depositos_previos:
@@ -252,23 +252,24 @@ def registro(cod):
 
 
 @app.route('/servicoPrevio/<cod>', methods=['GET','POST'])
-def servico_previ0(cod):
+def servico_previ0(cod):  
     from datetime import datetime
     from random import randint
     all_depositos_previos = busca_deposito()
-    all_servicos_previos = busca_servico()
+   
     data_e_hora_atuais = datetime.now()
     ale2 =randint(100,200)
     lista_servico=None
     data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
     codigo = int(cod)
+    all_servicos_previos = busca_servico(codigo)
     data_entrega = None
     user_fim = None
     realizado = 0
     servico_previo = request.form['servico_previo']
     valor_servico = request.form['valor_servico']
     servico_previo_maiunsculo = servico_previo.upper()
-    for i in all_depositos_previos:
+    for i in all_depositos_previos:   
         if i.cod_deposito == codigo:
             cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,i.criador,user_fim,realizado,valor_servico,codigo)
              
@@ -313,8 +314,9 @@ def DepositoPrevio():
     pendente = servicos_abertos()
     for i in pendente:
         pendente1= i[0]
+    qtd = qtd_servicos_abertos()
     
-    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,progresso=50)
+    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,progresso=50,qtd_servicos = qtd)
           
 
 if __name__ == '__main__':
