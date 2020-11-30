@@ -21,7 +21,7 @@
     <!-- Custom styles for this page -->
     <link href="../static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/pessoal.css">
-
+    {{ JSGlue.include() }}
 </head>
 
 <body id="page-top">
@@ -47,13 +47,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Caixa</span>
+                    <span>Serviços</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Caixa</h6>
+                        <h6 class="collapse-header">Tipos de Serviços</h6>
                      <!--  <a class="collapse-item" href="/servico">Serviço</a>-->
-                        <a class="collapse-item" href="/carrega_servicos">Deposito Previo</a>
+                        <a class="collapse-item" href="/previo">Deposito Previo</a>
 
                     </div>
 
@@ -145,7 +145,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="\depositoPrevioTotal">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Deposito Previo</span></a>
+                    <span>Caixa</span></a>
             </li>
 
             <!-- Divider -->

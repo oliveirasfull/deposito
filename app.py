@@ -1,11 +1,13 @@
 from flask import Flask, render_template,request, redirect, url_for
 import json
-
+from  flask  import  Flask 
+from  flask_jsglue  import  JSGlue 
 from caixa import CaixaDiario, depositoPrevio, servicoPrevio
 from banco import *
 app = Flask(__name__)
 
 
+jsglue  =  JSGlue ( app )
 user = 'Paulo'
 
 
@@ -145,8 +147,9 @@ def previo():
     return render_template('cadastro_deposito_previo.html',depositoGlobal= all_depositos_previos,servico =lista,servico_ativo = deposito_com_servico_aberto1)
 
 
-@app.route('/carrega_servicos' ,methods=['GET', 'POST'])
-def carrega_servicos():
+@app.route('/apaga_deposito/<cod>' ,methods=['GET', 'POST'])
+def apagar_deposito(cod):
+    delete_deposito(cod)
     
 
     #all_depositos_previos.append(busca_deposito(lista_deposito_previo3))
@@ -158,6 +161,10 @@ def carrega_servicos():
 
     
     return redirect('/previo')
+@app.route('/recarrega_deposito')
+def recarregar_deposito():
+    redirect('/previo')
+
 
 @app.route('/depositoPrevio', methods=['GET','POST'])
 def deposito_previo():
@@ -316,7 +323,7 @@ def DepositoPrevio():
         pendente1= i[0]
     qtd = qtd_servicos_abertos()
     
-    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,progresso=50,qtd_servicos = qtd)
+    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd)
           
 
 if __name__ == '__main__':

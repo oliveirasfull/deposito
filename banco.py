@@ -47,7 +47,7 @@ def busca_nome_bd(nome_busca):
 
 def busca_deposito():
     #sql= ("SELECT deposito_previo.iddeposito_previo,deposito_previo.cpf,deposito_previo.nome_solicitante,deposito_previo.tipo_documento,deposito_previo.criador,deposito_previo.data_criacao,deposito_previo.telefone,deposito_previo.Usuario_idUsuario FROM servico_previo,deposito_previo where servico_previo.deposito_previo_iddeposito_previo = deposito_previo.iddeposito_previo AND realizado =0")
-    sql = ("SELECT * FROM deposito_previo LIMIT 300")
+    sql = ("SELECT * FROM deposito_previo ORDER BY iddeposito_previo DESC LIMIT 500")
     mycursor.execute(sql)
 
     lista_depositos=[]
@@ -74,6 +74,16 @@ def cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telef
         #insert into deposito_previo(criador,tipo_documento,cpf,data_criação,horario,Usuario_idUsuario) values ('Lucas','ESCRITURA PUBLICA DE COMPRA E VENDA','025-753-123.69','2020-11-23',null,1);
         mycursor.execute(sql, val)
         print(mycursor.rowcount, "record inserted.")
+
+def delete_deposito(cod):
+        #sql = "DELETE FROM deposito_previo WHERE iddeposito_previo = %s"
+        #teste = (cod,)
+        #mycursor.execute(sql,teste)
+        #print(mycursor.rowcount, "record inserted.")
+        print("##################################################")
+        print(cod)
+        print("##################################################")
+        pass
 def busca_servico(codigo):
         sql= "SELECT * FROM servico_previo WHERE deposito_previo_iddeposito_previo = %s"
         teste = (codigo,)
@@ -127,7 +137,7 @@ def qtd_servicos_abertos():
 
         return valor
 
-print(qtd_servicos_abertos())
+
 
 
 
