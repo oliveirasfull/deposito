@@ -7,6 +7,8 @@ from banco import *
 app = Flask(__name__)
 
 
+
+
 jsglue  =  JSGlue ( app )
 user = 'Paulo'
 
@@ -79,7 +81,7 @@ def busca_nascimento():
     nome = request.form['nome_sql']
     nome_maiusculo = nome.upper()
     registro_nome.append(busca_nome_bd(nome_maiusculo))
-    
+    print('tese')
     
     return redirect('/nascimento')
 
@@ -161,6 +163,14 @@ def apagar_deposito(cod):
 
     
     return redirect('/previo')
+@app.route('/apaga_servico/<ist>/<cod>' ,methods=['GET', 'POST'])
+def apagar_servico(ist,cod):
+    delete_servico(cod)
+
+   
+    return redirect (url_for('registro',cod=ist))
+
+
 @app.route('/recarrega_deposito')
 def recarregar_deposito():
     redirect('/previo')
@@ -187,6 +197,9 @@ def deposito_previo():
         id_user = 2
     if criador == "Gabriel":
         id_user = 5
+    if criador == "Natacha":
+        id_user = 6
+    
     
     
     cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user)
@@ -286,8 +299,7 @@ def servico_previ0(cod):
 
 @app.route('/atualiza/<ist>/<cod>', methods=['GET','POST'])
 def atualiza_servico(ist,cod):
-    print(cod)
-    print(ist)
+  
 
     atualizar_servico(cod)
 

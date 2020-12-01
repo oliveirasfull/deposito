@@ -31,7 +31,7 @@ def busca_nome_bd(nome_busca):
         sql= ("SELECT * FROM nascimentos WHERE nomecrianca LIKE '%' %s '%'")
         teste = (nome_busca,)
         mycursor.execute(sql,teste)
-        
+        print('teste_BD')
         lista_nomes=[]
         myresult = mycursor.fetchall()
         
@@ -74,16 +74,29 @@ def cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telef
         #insert into deposito_previo(criador,tipo_documento,cpf,data_criação,horario,Usuario_idUsuario) values ('Lucas','ESCRITURA PUBLICA DE COMPRA E VENDA','025-753-123.69','2020-11-23',null,1);
         mycursor.execute(sql, val)
         print(mycursor.rowcount, "record inserted.")
+        print("************************************************************")
+        print("CRIOU DEPOSITO")
+        print("************************************************************")        
 
 def delete_deposito(cod):
-        #sql = "DELETE FROM deposito_previo WHERE iddeposito_previo = %s"
-        #teste = (cod,)
-        #mycursor.execute(sql,teste)
-        #print(mycursor.rowcount, "record inserted.")
-        print("##################################################")
-        print(cod)
-        print("##################################################")
-        pass
+        sql2 = "DELETE FROM servico_previo WHERE deposito_previo_iddeposito_previo = %s"
+        teste = (cod,)
+        mycursor.execute(sql2,teste)
+        sql = "DELETE FROM deposito_previo WHERE iddeposito_previo = %s"
+        mycursor.execute(sql,teste)
+        print(mycursor.rowcount, "record inserted.")
+        print("************************************************************")
+        print("APAGOU DEPOSITO")
+        print("************************************************************")
+def delete_servico(cod):
+        sql2 = "DELETE FROM servico_previo WHERE idservico_previo = %s"
+        teste = (cod,)
+        mycursor.execute(sql2,teste)
+        print(mycursor.rowcount, "record inserted.")
+        print("************************************************************")
+        print("APAGOU SERVICO")
+        print("************************************************************")
+       
 def busca_servico(codigo):
         sql= "SELECT * FROM servico_previo WHERE deposito_previo_iddeposito_previo = %s"
         teste = (codigo,)
@@ -104,12 +117,20 @@ def cadastro_servico(descricao_servico,data_registro,data_entrega,user_inicio,us
         val = (descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo)
         mycursor.execute(sql, val)
         print(mycursor.rowcount, "record inserted.")
+        print("************************************************************")
+        print("CRIOU SERVIÇO")
+        print("************************************************************")   
         
 
 def atualizar_servico(cod):
         sql = "UPDATE servico_previo SET realizado = %s WHERE idservico_previo = %s"
         val = ("1", cod)
         mycursor.execute(sql, val)
+        print(mycursor.rowcount, "record inserted.")
+        print("************************************************************")
+        print("REALIZOU O SERVIÇO")
+        print("************************************************************")   
+        
         
 
 def servicos_abertos():
