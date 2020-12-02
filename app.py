@@ -199,6 +199,8 @@ def deposito_previo():
         id_user = 5
     if criador == "Natacha":
         id_user = 6
+    if criador == "Everaldo":
+        id_user = 7
     
     
     
@@ -299,9 +301,10 @@ def servico_previ0(cod):
 
 @app.route('/atualiza/<ist>/<cod>', methods=['GET','POST'])
 def atualiza_servico(ist,cod):
-  
-
-    atualizar_servico(cod)
+    from datetime import datetime
+    data_e_hora_atuais = datetime.now()
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
+    atualizar_servico(cod,data_e_hora_em_texto)
 
 
 
@@ -336,6 +339,7 @@ def DepositoPrevio():
     qtd = qtd_servicos_abertos()
     
     return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd)
+
           
 
 if __name__ == '__main__':

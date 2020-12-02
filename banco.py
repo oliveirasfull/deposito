@@ -122,10 +122,13 @@ def cadastro_servico(descricao_servico,data_registro,data_entrega,user_inicio,us
         print("************************************************************")   
         
 
-def atualizar_servico(cod):
+def atualizar_servico(cod,data):
         sql = "UPDATE servico_previo SET realizado = %s WHERE idservico_previo = %s"
         val = ("1", cod)
         mycursor.execute(sql, val)
+        sql1 = "UPDATE servico_previo SET data_entrega = %s WHERE idservico_previo = %s"
+        val1 =(data,cod) 
+        mycursor.execute(sql1, val1)
         print(mycursor.rowcount, "record inserted.")
         print("************************************************************")
         print("REALIZOU O SERVIÇO")
@@ -157,6 +160,12 @@ def qtd_servicos_abertos():
                 valor = i[0]
 
         return valor
+def servicos_realizado_dia():
+        #DATA = 2020-12-02
+
+        #sql ="SELECT data_entrega,descricao_servico,valor FROM servico_previo where data_entrega = %s AND realizado =1 AND user_inicio= %s"
+   
+        pass
 
 
 
