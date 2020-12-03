@@ -162,10 +162,22 @@ def qtd_servicos_abertos():
         return valor
 def servicos_realizado_dia():
         #DATA = 2020-12-02
+        lista_realizados=[]
+        lista_realizados_dia =[]
+        sql ="SELECT data_entrega,descricao_servico,valor,user_inicio FROM servico_previo where data_entrega = %s AND realizado =1"
+        val = ("2020-12-03",)
+        mycursor.execute(sql,val)
+        myresult = mycursor.fetchall()
+        
+        for x in myresult:
+                lista_realizados = (x[0],x[1],x[2],x[3])
+                lista_realizados_dia.append(lista_realizados)
+               
+        return lista_realizados_dia
 
-        #sql ="SELECT data_entrega,descricao_servico,valor FROM servico_previo where data_entrega = %s AND realizado =1 AND user_inicio= %s"
-   
-        pass
+
+        
+       
 
 
 

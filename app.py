@@ -1,15 +1,21 @@
 from flask import Flask, render_template,request, redirect, url_for
 import json
+
 from  flask  import  Flask 
 from  flask_jsglue  import  JSGlue 
 from caixa import CaixaDiario, depositoPrevio, servicoPrevio
 from banco import *
+
+from flask import make_response
+
+
 app = Flask(__name__)
 
 
 
 
 jsglue  =  JSGlue ( app )
+
 user = 'Paulo'
 
 
@@ -155,13 +161,7 @@ def apagar_deposito(cod):
     
 
     #all_depositos_previos.append(busca_deposito(lista_deposito_previo3))
-    
-    
-    
-    
-
-
-    
+        
     return redirect('/previo')
 @app.route('/apaga_servico/<ist>/<cod>' ,methods=['GET', 'POST'])
 def apagar_servico(ist,cod):
@@ -181,8 +181,10 @@ def deposito_previo():
     from datetime import datetime
     from random import randint
     cpf = request.form['cpf']
-    nome = request.form['nome_solicitante']
-    tipo_documento = request.form['tipo_documento']
+    nome_minusculo = request.form['nome_solicitante']
+    nome = nome_minusculo.upper()
+    tipo_documento_minus = request.form['tipo_documento']
+    tipo_documento = tipo_documento_minus.upper()
     criador = request.form['criador']
     telefone = request.form['telefone_solicitante']
 
@@ -202,25 +204,9 @@ def deposito_previo():
     if criador == "Everaldo":
         id_user = 7
     
-    
-    
     cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user)
 
-  
-
-
-
     return redirect('/previo')
-
-
-
-
-    
-
-    
-    
-
-    
 
 @app.route('/registro/<cod>', methods=['GET','POST'])
 def registro(cod):
@@ -232,9 +218,6 @@ def registro(cod):
     lista_servicos =[]
     lista_doida = []
     
-
-
-
     all_depositos_previos = busca_deposito()
     all_servicos_previos = busca_servico(codigo)
 
@@ -243,9 +226,7 @@ def registro(cod):
         if i.cod_deposito == codigo:
             deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
             lista_doida.append(deposito_serv)
-
-
-    
+   
     for j in all_servicos_previos:
         if j.cod_deposito == codigo:
             servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor)
@@ -260,17 +241,9 @@ def registro(cod):
     total = servico_realizado+servico_aberto
 
   
-    #valor_servico1 = request.form['valor_servico']
-    
-
-
-
-
-    
+    #valor_servico1 = request.form['valor_servico'] 
    
     return render_template('registro_servico.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
-
-
 
 
 @app.route('/servicoPrevio/<cod>', methods=['GET','POST'])
@@ -299,6 +272,29 @@ def servico_previ0(cod):
 
     return redirect (url_for('registro',cod=cod))
 
+
+@app.route('/comprovante/<cod>', methods=['GET','POST'])
+def comprovante(cod):
+    import pdfkit
+    rendered = render_template('comprovante.html',name=cod)
+    pdf = pdfkit.from_string(rendered,False)
+    response = make_response(pdf)
+    response.headers['Content-Type']= 'application/pdf'
+
+    #print(cod)
+    #name = "LUCAS CRISTHIAN"
+    #html = render_template(
+    #    "comprovante.html",
+    #    name=name)
+    #pdf = pdfkit.from_string(html, False)
+    #response = make_response(pdf)
+    #response.headers["Content-Type"] = "application/pdf"
+    #response.headers["Content-Disposition"] = "inline; filename=output.pdf"
+
+   
+
+
+
 @app.route('/atualiza/<ist>/<cod>', methods=['GET','POST'])
 def atualiza_servico(ist,cod):
     from datetime import datetime
@@ -311,25 +307,6 @@ def atualiza_servico(ist,cod):
     return redirect (url_for('registro',cod=ist))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/cards')
-def card():
-    return render_template('cards.html')
-
 @app.route('/depositoPrevioTotal')
 def DepositoPrevio():
     
@@ -337,6 +314,9 @@ def DepositoPrevio():
     for i in pendente:
         pendente1= i[0]
     qtd = qtd_servicos_abertos()
+
+    servicos_dia = servicos_realizado_dia()
+    
     
     return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd)
 
