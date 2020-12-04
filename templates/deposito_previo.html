@@ -299,6 +299,53 @@
 <INPUT TYPE="RADIO " NAME="" VALUE="Dirce"> Dirce
 <label for="male">Male</label><br>
 -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Serviços realizados no dia 
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Codigo Deposito</th>
+                        <th>Data</th>
+                        <th>Serviço</th>
+                        <th>Valor</th>
+                        <th>realizador</th>
+                    
 
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                 
+                        
+                   <th>TOTAL : {{total}}</th>
+    
+                    </tr>
+                </tfoot>
+              
+                <tbody>
+                    {% for i in servico_do_dia%}
+                    <tr>
+                        <td>{{i[0]}}</td>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td>{{i[3]}}</td>
+                        <td>{{i[4]}}</td>
+            
+
+
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
 
 {%endblock%}

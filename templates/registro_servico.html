@@ -69,7 +69,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="previo">valor</label>
-            <input type="number" class="form-control" id="decimal" name="valor_servico" step="0.010" placeholder="DIGITE O VALOR DO SERVIÇO">
+            <input type="number" class="form-control" id="decimal" name="valor_servico" step="0.010" placeholder="DIGITE O VALOR DO SERVIÇO EX :(100.50) OU (1200.40)">
           </div>
           <div class="form-group col-md-6">
             <button type="submmit" class="btn btn-primary">SALVAR</button>
@@ -176,7 +176,8 @@
       </div>
   </div>
 </div>
-<form method="post" action="/comprovante{{teste}}">
+
+<form method="post" action="/comprovante/{{teste}}">
   <button type="submmit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-printer-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z"/>
@@ -186,7 +187,6 @@
    
 
 </form>
-
 
 
 

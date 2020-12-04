@@ -160,17 +160,17 @@ def qtd_servicos_abertos():
                 valor = i[0]
 
         return valor
-def servicos_realizado_dia():
+def servicos_realizado_dia(data):
         #DATA = 2020-12-02
         lista_realizados=[]
         lista_realizados_dia =[]
-        sql ="SELECT data_entrega,descricao_servico,valor,user_inicio FROM servico_previo where data_entrega = %s AND realizado =1"
-        val = ("2020-12-03",)
+        sql ="SELECT deposito_previo_iddeposito_previo,data_entrega,descricao_servico,valor,user_inicio FROM servico_previo where data_entrega = %s AND realizado =1"
+        val = (data,)
         mycursor.execute(sql,val)
         myresult = mycursor.fetchall()
         
         for x in myresult:
-                lista_realizados = (x[0],x[1],x[2],x[3])
+                lista_realizados = (x[0],x[1],x[2],x[3],x[4])
                 lista_realizados_dia.append(lista_realizados)
                
         return lista_realizados_dia

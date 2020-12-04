@@ -1,12 +1,14 @@
-from flask import Flask, render_template,request, redirect, url_for
+from flask import Flask, render_template,request, redirect, url_for, make_response
 import json
-
+import pdfkit
 from  flask  import  Flask 
-from  flask_jsglue  import  JSGlue 
+
 from caixa import CaixaDiario, depositoPrevio, servicoPrevio
 from banco import *
+from reportlab.pdfgen import canvas
+from io import BytesIO
 
-from flask import make_response
+
 
 
 app = Flask(__name__)
@@ -14,7 +16,7 @@ app = Flask(__name__)
 
 
 
-jsglue  =  JSGlue ( app )
+
 
 user = 'Paulo'
 
@@ -275,21 +277,23 @@ def servico_previ0(cod):
 
 @app.route('/comprovante/<cod>', methods=['GET','POST'])
 def comprovante(cod):
-    import pdfkit
-    rendered = render_template('comprovante.html',name=cod)
-    pdf = pdfkit.from_string(rendered,False)
-    response = make_response(pdf)
-    response.headers['Content-Type']= 'application/pdf'
+    output = BytesIO()   
 
-    #print(cod)
-    #name = "LUCAS CRISTHIAN"
-    #html = render_template(
-    #    "comprovante.html",
-    #    name=name)
-    #pdf = pdfkit.from_string(html, False)
-    #response = make_response(pdf)
-    #response.headers["Content-Type"] = "application/pdf"
-    #response.headers["Content-Disposition"] = "inline; filename=output.pdf"
+    p = canvas.Canvas(output)
+    p.setTitle('comprovante')
+    p.drawString(245,750, 'SERVIÇOS')
+    
+    p.showPage()
+    p.save()
+
+    pdf_out = output.getvalue()
+    output.close()  
+    response = make_response(pdf_out)
+    response.headers['Content-Disposition'] = "attachment; filename='comprovante.pdf"
+    response.mimetype = 'application/pdf'
+
+    return response
+    
 
    
 
@@ -309,16 +313,23 @@ def atualiza_servico(ist,cod):
 
 @app.route('/depositoPrevioTotal')
 def DepositoPrevio():
+    from datetime import datetime
+    total =0.0
     
+    data_e_hora_atuais = datetime.now()
+    data = data_e_hora_atuais.strftime('%y/%m/%d')
+    servico_do_dia =[]
     pendente = servicos_abertos()
     for i in pendente:
         pendente1= i[0]
     qtd = qtd_servicos_abertos()
 
-    servicos_dia = servicos_realizado_dia()
+    servicos_dia = servicos_realizado_dia(data)
+    for i in servicos_dia:
+        servico_do_dia.append(i)
+       
     
-    
-    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd)
+    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia)
 
           
 
