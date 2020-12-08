@@ -6,6 +6,7 @@ from  flask  import  Flask
 from caixa import CaixaDiario, depositoPrevio, servicoPrevio
 from banco import *
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
 from io import BytesIO
 
 
@@ -277,19 +278,70 @@ def servico_previ0(cod):
 
 @app.route('/comprovante/<cod>', methods=['GET','POST'])
 def comprovante(cod):
-    output = BytesIO()   
+    from reportlab.lib import utils
+    from reportlab.lib.pagesizes import letter
+    total = 0
+    servico_realizado = 0
+    servico_aberto = 0
+    lista_servicos =[]
+    lista_doida = []
+    
+    all_depositos_previos = busca_deposito()
+    all_servicos_previos = busca_servico(cod)
 
+
+    for i in all_depositos_previos:
+        if i.cod_deposito == cod:
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
+            lista_doida.append(deposito_serv)
+   
+    for j in all_servicos_previos:
+        if j.cod_deposito == cod:
+            servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor)
+
+            lista_servicos.append(servicos)
+
+            if j.realizacao == 0:
+                
+                servico_aberto = j.valor + servico_aberto
+            if j.realizacao == 1:
+                servico_realizado = j.valor + servico_realizado
+    total = servico_realizado+servico_aberto
+    
+    
+    
+    
+    
+    output = BytesIO()  
     p = canvas.Canvas(output)
     p.setTitle('comprovante')
-    p.drawString(245,750, 'SERVIÇOS')
+    image_path ="../Deposito_previo_2.0/static/img/cart.jpg"
+    img = utils.ImageReader(image_path)
+    img_width, img_height = img.getSize()
+    aspect = img_height / float(img_width)
+ 
+    p.saveState()
+    p.drawImage(image_path, 225, 765,
+               width=200, height=(150 * aspect))
+    p.restoreState()
+    p.drawString(105,750,'SERVENTIA EXTRAJUDICIAL DA COMARCA DE SENA MADUREIRA/AC')
+    p.drawString(30,703,'DOCUMENTO:')
+    p.line(120,700,580,700)
     
+    p.drawString(120,703,cod)
+    #p.drawString(500,750,"12/12/2010")
+    
+
+   
+    p.line(100,50,510,50)
+    p.drawString(245,30,'FUNCIONÁRIO')
     p.showPage()
     p.save()
 
     pdf_out = output.getvalue()
     output.close()  
     response = make_response(pdf_out)
-    response.headers['Content-Disposition'] = "attachment; filename='comprovante.pdf"
+    response.headers['Content-Disposition'] = "attachment; filename=comprovante.pdf"
     response.mimetype = 'application/pdf'
 
     return response
@@ -314,7 +366,8 @@ def atualiza_servico(ist,cod):
 @app.route('/depositoPrevioTotal')
 def DepositoPrevio():
     from datetime import datetime
-    total =0.0
+    
+    total = 0.0
     
     data_e_hora_atuais = datetime.now()
     data = data_e_hora_atuais.strftime('%y/%m/%d')
@@ -327,9 +380,15 @@ def DepositoPrevio():
     servicos_dia = servicos_realizado_dia(data)
     for i in servicos_dia:
         servico_do_dia.append(i)
+    for i in servico_do_dia:
+        parte = i[3]
+        parte1 = float(parte)
+       
+       
+        total = total + parte1
        
     
-    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia)
+    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
 
           
 
