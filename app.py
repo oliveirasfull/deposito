@@ -390,7 +390,10 @@ def DepositoPrevio():
     
     return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
 
+@app.route('/orcamento')
+def orcamento():
+    return  render_template('livros/nascimento.html')
           
 
 if __name__ == '__main__':
-   app.run(host= '0.0.0.0',debug=True,port='5000')
+   app.run(host= 'localhost',debug=True,port='8080')
