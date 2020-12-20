@@ -193,6 +193,7 @@ def deposito_previo():
 
     #ale =randint(2,100)
     ale2 =randint(100,200)
+    pago =1
 
     data_e_hora_atuais = datetime.now()
     data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
@@ -207,7 +208,7 @@ def deposito_previo():
     if criador == "Everaldo":
         id_user = 7
     
-    cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user)
+    cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago)
 
     return redirect('/previo')
 
@@ -227,7 +228,7 @@ def registro(cod):
 
     for i in all_depositos_previos:
         if i.cod_deposito == codigo:
-            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
             lista_doida.append(deposito_serv)
    
     for j in all_servicos_previos:
@@ -292,7 +293,7 @@ def comprovante(cod):
 
     for i in all_depositos_previos:
         if i.cod_deposito == cod:
-            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
             lista_doida.append(deposito_serv)
    
     for j in all_servicos_previos:

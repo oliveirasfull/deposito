@@ -57,9 +57,9 @@ def busca_deposito():
     myresult = mycursor.fetchall()
 
     for x in myresult:
-        lista_depositos = depositoPrevio(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
+        lista_depositos = depositoPrevio(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8])
         
-        depositos = depositoPrevio(lista_depositos.cod_deposito,lista_depositos.cpf_solicitante,lista_depositos.nome_solicitante,lista_depositos.tipo_documento,lista_depositos.criador,lista_depositos.data_criacao,lista_depositos.telefone,lista_depositos.usuario)
+        depositos = depositoPrevio(lista_depositos.cod_deposito,lista_depositos.cpf_solicitante,lista_depositos.nome_solicitante,lista_depositos.tipo_documento,lista_depositos.criador,lista_depositos.data_criacao,lista_depositos.telefone,lista_depositos.usuario,lista_depositos.pago)
         
         lista_0.append(depositos)
         
@@ -67,10 +67,10 @@ def busca_deposito():
 
 
 
-def cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user):
+def cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago):
         #insert into deposito_previo(cpf,nome_solicitante,tipo_documento,criador,data_criacao,telefone,Usuario_idUsuario) values(' 025-762-354-62  ','LETICIA MARREIRO','TESTE DE REGISTRO COM DIRCE','Dirce','2020-11-26',null,2);
-        sql = "INSERT INTO deposito_previo (cpf,nome_solicitante,tipo_documento,criador,data_criacao,telefone,Usuario_idUsuario) VALUES (%s, %s,%s, %s,%s, %s,%s)"
-        val = (cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user)
+        sql = "INSERT INTO deposito_previo (cpf,nome_solicitante,tipo_documento,criador,data_criacao,telefone,Usuario_idUsuario,pago) VALUES (%s, %s,%s, %s,%s, %s,%s,%s)"
+        val = (cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago)
         #insert into deposito_previo(criador,tipo_documento,cpf,data_criação,horario,Usuario_idUsuario) values ('Lucas','ESCRITURA PUBLICA DE COMPRA E VENDA','025-753-123.69','2020-11-23',null,1);
         mycursor.execute(sql, val)
         print(mycursor.rowcount, "record inserted.")
