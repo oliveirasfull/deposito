@@ -58,7 +58,7 @@ def autenticar ():
     validar = login_bd(usuario,senha)
     if validar == True:
         if usuario == 'dirce':
-            return redirect('/depositoPrevioTotal')
+            return redirect('/index_admin')
         else:
             return redirect('/index')
     else:
@@ -73,7 +73,13 @@ def erro():
 def index():
     usuario = user
     
+
     return render_template('index.html', usuario=usuario)
+@app.route('/index_admin')
+def index_admin():
+    usuario = user
+    
+    return render_template('admin/index.html', usuario=usuario)
 
 
 
@@ -379,7 +385,7 @@ def atualiza_servico(ist,cod):
     return redirect (url_for('registro',cod=ist))
 
 
-@app.route('/depositoPrevioTotal')
+@app.route('/depositoPrevioTotal/admin')
 def DepositoPrevio():
     from datetime import datetime
     
