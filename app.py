@@ -57,7 +57,10 @@ def autenticar ():
     usuario = request.form['usuario']
     validar = login_bd(usuario,senha)
     if validar == True:
-        return redirect('/index')
+        if usuario == 'dirce':
+            return redirect('/depositoPrevioTotal')
+        else:
+            return redirect('/index')
     else:
         return redirect('/erro') 
         ##return redirect('/index')
@@ -401,7 +404,7 @@ def DepositoPrevio():
         total = total + parte1
        
     
-    return render_template('deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
+    return render_template('admin/deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
 
 @app.route('/orcamento')
 def orcamento():
