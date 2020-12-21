@@ -1,4 +1,4 @@
-{% extends "index.html" %} {% block conteudo %}
+{% extends "admin/index.html" %} {% block conteudo %}
 
 <script>
   
@@ -176,7 +176,56 @@
     }
 </style>
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="dados" ">CADASTRAR</button>
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+        <div class="modal-content ">
+                <form name="servico1" action="/depositoPrevio" method="post">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="nome ">CPF do Apresentante</label>
+                            <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar( '###.###.###-##', this)" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Nome do Apresentante</label>
+                            <input type="text" id="servico" name="nome_solicitante" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Telefone do Apresentante</label>
+                            <input type="text" id="telefone" name="telefone_solicitante" maxlength="11"required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico ">Tipo de Documento</label>
+                            <input type="text" id="documento" name="tipo_documento" required class="form-control">
+                        </div>
+    
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>Escolha seu Criador</legend>
+                                <form name="form1" onSubmit="return validaRadio()">
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Gabriel"> Gabriel
+                                   <INPUT TYPE="RADIO" NAME="criador" VALUE="Natacha"> Natacha 
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Joao Paulo"> Joao Paulo
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Dirce"> Dirce
+                                    <INPUT TYPE="RADIO" NAME="criador" VALUE="Everaldo"> Everaldo
+    
+    
+                                </form>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                                <button type="submmit" class="btn btn-primary">SALVAR</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
+                              </div>
+                    
+                    
+                        </fieldset>
+
+          
+        </div>
+    </div>
+</div>
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -194,7 +243,7 @@
                                 <th>Documento</th>
                                 <th>Data</th>
                                 <th>Serviços</th>
-            
+                              
                              
         
                             </tr>
@@ -236,13 +285,34 @@
                                     </form>	                                  
 
                                     {%endif%}
-                                 
+                                    <form method="post" action="/apaga_deposito/{{deposito.cod_deposito}}"> 
+                                    <button type="submmit" class="btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                                      </svg>
+                                       
+                                     </button>
+                                    </form>  
+                                    <form method="post" action="/registro/{{deposito.cod_deposito}}">
+                                        <button type="submmit" class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                            <form method="post" action="/registro/{{deposito.cod_deposito}}">
+                                                <button type="submmit" class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                                                        <path d="M14 3H1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1h-1z"/>
+                                                        <path fill-rule="evenodd" d="M15 5H1v8h14V5zM1 4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H1z"/>
+                                                        <path d="M13 5a2 2 0 0 0 2 2V5h-2zM3 5a2 2 0 0 1-2 2V5h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 13a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                                                      </svg>
+                                                      </button>	                                       
+        
+                                              </button>	                                       
+
+                                    
                                     
                                    
                                   
                                
                                 </td> 
-                           
+                          
                                 </tr>
                                 {%endfor%}
                          </tbody>

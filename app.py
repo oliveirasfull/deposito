@@ -231,7 +231,7 @@ def deposito_previo():
     
     cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago)
 
-    return redirect('/previo')
+    return redirect('/orcamento')
 
 @app.route('/registro/<cod>', methods=['GET','POST'])
 def registro(cod):
@@ -385,7 +385,7 @@ def atualiza_servico(ist,cod):
     return redirect (url_for('registro',cod=ist))
 
 
-@app.route('/depositoPrevioTotal/admin')
+@app.route('/depositoPrevioTotal_admin')
 def DepositoPrevio():
     from datetime import datetime
     
@@ -424,7 +424,33 @@ def orcamento():
         
     
     return render_template('orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
-          
+@app.route('/orcamento_admin')
+def orcamento_admin():
+    deposito_com_servico_nao_pagos = []
+    deposito_pago =[]
+    for i in all_depositos_previos:
+        if i.pago == 0:
+            deposito_pago = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            deposito_com_servico_nao_pagos.append(deposito_pago)
+   
+        
+    
+    return render_template('admin/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
+
+@app.route('/versenha/<numero>', methods=['GET','POST'])
+def versenha(numero):
+    
+  
+
+    
+    return render_template('atendimento/visualizarsenha.html',numero=numero)
+@app.route('/gerarsenha')
+def gerarsenha():
+    from random import randint
+    numero =randint(10,20)
+    return redirect (url_for('versenha',numero=numero))
+ 
+
 
 if __name__ == '__main__':
-   app.run(host= 'localhost',debug=True,port='8080')
+   app.run(host= '0.0.0.0',debug=True,port='8080')
