@@ -59,8 +59,8 @@ def autenticar ():
     if validar == True:
         return redirect('/index')
     else:
-        ##return redirect('/erro') 
-        return redirect('/index')
+        return redirect('/erro') 
+        ##return redirect('/index')
 
 @app.route('/erro')
 def erro():
@@ -149,13 +149,24 @@ def caixaDoDia():
 @app.route('/previo')
 def previo():
     deposito_com_servico_aberto1 =[]
-    all_depositos_previos = busca_deposito()
+    orcamento = busca_deposito()
+    deposito_em_aguardo = []
+    todos_depositos = []
+
+
     deposito_com_servico_aberto = lista_de_depositos_com_servico_aberto()
     for i in deposito_com_servico_aberto:
         deposito_com_servico_aberto1.append(i[0])
+    for i in orcamento:
+        if i.pago == 1:
+            deposito_em_aguardo = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            todos_depositos.append(deposito_em_aguardo)
+    
+            
+
         
     
-    return render_template('cadastro_deposito_previo.html',depositoGlobal= all_depositos_previos,servico =lista,servico_ativo = deposito_com_servico_aberto1)
+    return render_template('cadastro_deposito_previo.html',depositoGlobal= todos_depositos,servico =lista,servico_ativo = deposito_com_servico_aberto1)
 
 
 @app.route('/apaga_deposito/<cod>' ,methods=['GET', 'POST'])
@@ -191,6 +202,8 @@ def deposito_previo():
     criador = request.form['criador']
     telefone = request.form['telefone_solicitante']
 
+    pago = 0
+
     #ale =randint(2,100)
     ale2 =randint(100,200)
 
@@ -207,7 +220,7 @@ def deposito_previo():
     if criador == "Everaldo":
         id_user = 7
     
-    cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user)
+    cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago)
 
     return redirect('/previo')
 
@@ -227,7 +240,7 @@ def registro(cod):
 
     for i in all_depositos_previos:
         if i.cod_deposito == codigo:
-            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario)
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
             lista_doida.append(deposito_serv)
    
     for j in all_servicos_previos:
@@ -392,7 +405,16 @@ def DepositoPrevio():
 
 @app.route('/orcamento')
 def orcamento():
-    return  render_template('livros/nascimento.html')
+    deposito_com_servico_nao_pagos = []
+    deposito_pago =[]
+    for i in all_depositos_previos:
+        if i.pago == 0:
+            deposito_pago = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            deposito_com_servico_nao_pagos.append(deposito_pago)
+   
+        
+    
+    return render_template('orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
           
 
 if __name__ == '__main__':
