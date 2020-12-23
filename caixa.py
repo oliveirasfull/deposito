@@ -21,7 +21,7 @@ class depositoPrevio(object):
         self.pago = pago
       
 class servicoPrevio(depositoPrevio): 
-    def __init__(self,cod_deposito,cod_servico,descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizacao,valor):
+    def __init__(self,cod_deposito,cod_servico,descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizacao,valor,pago):
         self.cod_servico = cod_servico
         self.descricao_servico = descricao_servico
         self.data_registro = data_registro
@@ -31,5 +31,6 @@ class servicoPrevio(depositoPrevio):
         self.realizacao = realizacao
         self.valor = valor
         self.cod_deposito = cod_deposito
+        self.pago = pago
       
         

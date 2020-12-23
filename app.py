@@ -289,9 +289,10 @@ def servico_previ0(cod):
     servico_previo = request.form['servico_previo']
     valor_servico = request.form['valor_servico']
     servico_previo_maiunsculo = servico_previo.upper()
+    pago =0
     for i in all_depositos_previos:   
         if i.cod_deposito == codigo:
-            cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,i.criador,user_fim,realizado,valor_servico,codigo)
+            cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,i.criador,user_fim,realizado,valor_servico,codigo,pago)
              
                 #cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,j.criador,user_fim,realizado,valor_servico,i.cod_deposito)
 
@@ -384,6 +385,17 @@ def atualiza_servico(ist,cod):
 
     return redirect (url_for('registro',cod=ist))
 
+@app.route('/atualiza_admin/<ist>/<cod>', methods=['GET','POST'])
+def atualiza_servico_admin(ist,cod):
+    from datetime import datetime
+    data_e_hora_atuais = datetime.now()
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
+    atualizar_servico(cod,data_e_hora_em_texto)
+
+
+
+    return redirect (url_for('registro_admin',cod=ist))
+
 
 @app.route('/depositoPrevioTotal_admin')
 def DepositoPrevio():
@@ -395,8 +407,7 @@ def DepositoPrevio():
     data = data_e_hora_atuais.strftime('%y/%m/%d')
     servico_do_dia =[]
     pendente = servicos_abertos()
-    for i in pendente:
-        pendente1= i[0]
+  
     qtd = qtd_servicos_abertos()
 
     servicos_dia = servicos_realizado_dia(data)
@@ -410,7 +421,7 @@ def DepositoPrevio():
         total = total + parte1
        
     
-    return render_template('admin/deposito_previo.html',pendente=pendente1,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
+    return render_template('admin/deposito_previo.html',pendente=pendente,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
 
 @app.route('/orcamento')
 def orcamento():
@@ -425,6 +436,54 @@ def orcamento():
         
     
     return render_template('orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
+
+
+
+
+@app.route('/registro_admin/<cod>', methods=['GET','POST'])
+def registro_admin(cod):
+    all_depositos_previos = busca_deposito()
+    total = 0
+    servico_realizado = 0
+    servico_aberto = 0
+    
+    codigo = int(cod)
+    lista_servicos =[]
+    lista_doida = []
+    
+    
+    all_servicos_previos = busca_servico(codigo)
+
+
+    for i in all_depositos_previos:
+        if i.cod_deposito == codigo:
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            lista_doida.append(deposito_serv)
+   
+    for j in all_servicos_previos:
+        if j.cod_deposito == codigo:
+            servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor,j.pago)
+
+            lista_servicos.append(servicos)
+
+            if j.realizacao == 0:
+                
+                servico_aberto = j.valor + servico_aberto
+            if j.realizacao == 1:
+                servico_realizado = j.valor + servico_realizado
+    total = servico_realizado+servico_aberto
+
+  
+    #valor_servico1 = request.form['valor_servico'] 
+   
+    return render_template('admin/registro_servico.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
+
+
+
+
+
+
+
 @app.route('/orcamento_admin')
 def orcamento_admin():
     deposito_com_servico_nao_pagos = []
@@ -451,7 +510,9 @@ def gerarsenha():
     numero =randint(10,20)
     return redirect (url_for('versenha',numero=numero))
  
-
-
+@app.route('/pagamento/<cod>')
+def pagamento(cod):
+    pagamento_servico(cod)
+    return redirect('/orcamento_admin')
 if __name__ == '__main__':
    app.run(host= '0.0.0.0',debug=True,port='8080')

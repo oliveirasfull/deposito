@@ -263,7 +263,7 @@
                                 
                                 <td>
                                     {%if deposito.cod_deposito in servico_ativo%}
-                                    <form method="post" action="/registro/{{deposito.cod_deposito}}">
+                                    <form method="post" action="/registro_admin/{{deposito.cod_deposito}}">
                                         <button type="submmit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
@@ -273,7 +273,7 @@
                                               
                                     </form>
                                       {%else%}
-                                      <form method="post" action="/registro/{{deposito.cod_deposito}}">
+                                      <form method="post" action="/registro_admin/{{deposito.cod_deposito}}">
                                         <button type="submmit" class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
