@@ -137,7 +137,7 @@ def atualizar_servico(cod,data):
         
 
 def servicos_abertos():
-        sql = "SELECT SUM(VALOR) FROM servico_previo WHERE realizado = 0"
+        sql = "SELECT SUM(VALOR) FROM servico_previo,deposito_previo WHERE servico_previo.realizado = 0 and deposito_previo.pago =0"
         
         mycursor.execute(sql)
         myresult = mycursor.fetchall()

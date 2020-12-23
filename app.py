@@ -414,6 +414,7 @@ def DepositoPrevio():
 
 @app.route('/orcamento')
 def orcamento():
+    all_depositos_previos = busca_deposito()
     deposito_com_servico_nao_pagos = []
     deposito_pago =[]
     for i in all_depositos_previos:
@@ -432,7 +433,7 @@ def orcamento_admin():
         if i.pago == 0:
             deposito_pago = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
             deposito_com_servico_nao_pagos.append(deposito_pago)
-   
+            print(deposito_com_servico_nao_pagos)
         
     
     return render_template('admin/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
