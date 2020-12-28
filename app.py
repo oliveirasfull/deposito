@@ -177,6 +177,27 @@ def previo():
     
     return render_template('cadastro_deposito_previo.html',depositoGlobal= todos_depositos,servico =lista,servico_ativo = deposito_com_servico_aberto1)
 
+@app.route('/previo_user')
+def previo_user():
+    deposito_com_servico_aberto1 =[]
+    orcamento = busca_deposito()
+    deposito_em_aguardo = []
+    todos_depositos = []
+
+
+    deposito_com_servico_aberto = lista_de_depositos_com_servico_aberto()
+    for i in deposito_com_servico_aberto:
+        deposito_com_servico_aberto1.append(i[0])
+    for i in orcamento:
+        if i.pago == 1:
+            deposito_em_aguardo = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            todos_depositos.append(deposito_em_aguardo)
+    
+            
+
+        
+    
+    return render_template('user/lista_previa.html',depositoGlobal= todos_depositos,servico =lista,servico_ativo = deposito_com_servico_aberto1)
 
 @app.route('/apaga_deposito/<cod>' ,methods=['GET', 'POST'])
 def apagar_deposito(cod):
@@ -185,7 +206,7 @@ def apagar_deposito(cod):
 
     #all_depositos_previos.append(busca_deposito(lista_deposito_previo3))
         
-    return redirect('/previo')
+    return redirect('/orcamento')
 @app.route('/apaga_servico/<ist>/<cod>' ,methods=['GET', 'POST'])
 def apagar_servico(ist,cod):
     delete_servico(cod)
@@ -254,7 +275,7 @@ def registro(cod):
    
     for j in all_servicos_previos:
         if j.cod_deposito == codigo:
-            servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor)
+            servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor,j.pago)
 
             lista_servicos.append(servicos)
 
@@ -296,7 +317,7 @@ def servico_previ0(cod):
              
                 #cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,j.criador,user_fim,realizado,valor_servico,i.cod_deposito)
 
-    return redirect (url_for('registro',cod=cod))
+    return redirect (url_for('orcamento_previo',cod=cod))
 
 
 @app.route('/comprovante/<cod>', methods=['GET','POST'])
@@ -438,6 +459,44 @@ def orcamento():
     return render_template('orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
 
 
+
+
+@app.route('/orcamento_previo/<cod>',methods=['GET','POST'])
+def orcamento_previo(cod):
+    total = 0
+    servico_realizado = 0
+    servico_aberto = 0
+    
+    codigo = int(cod)
+    lista_servicos =[]
+    lista_doida = []
+    
+    all_depositos_previos = busca_deposito()
+    all_servicos_previos = busca_servico(codigo)
+
+
+    for i in all_depositos_previos:
+        if i.cod_deposito == codigo:
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            lista_doida.append(deposito_serv)
+   
+    for j in all_servicos_previos:
+        if j.cod_deposito == codigo:
+            servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor,j.pago)
+
+            lista_servicos.append(servicos)
+
+            if j.realizacao == 0:
+                
+                servico_aberto = j.valor + servico_aberto
+            if j.realizacao == 1:
+                servico_realizado = j.valor + servico_realizado
+    total = servico_realizado+servico_aberto
+
+  
+    #valor_servico1 = request.form['valor_servico'] 
+   
+    return render_template('user/orcamento_previo.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
 
 
 @app.route('/registro_admin/<cod>', methods=['GET','POST'])

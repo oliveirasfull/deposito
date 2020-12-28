@@ -259,7 +259,7 @@
                                 <td>{{deposito.tipo_documento}}</td>
                                 <td>{{deposito.data_criacao}}</td>
                                
-                                
+                         
                                 
                                 <td>
                                     {%if deposito.cod_deposito in servico_ativo%}
@@ -293,8 +293,7 @@
                                        
                                      </button>
                                     </form>  
-                                    <form method="post" action="/registro/{{deposito.cod_deposito}}">
-                                        <button type="submmit" class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                    
                                             <form method="post" action="/registro/{{deposito.cod_deposito}}">
                                                 <button type="submmit" class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">

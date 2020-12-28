@@ -103,7 +103,7 @@ def busca_servico(codigo):
         
         return servico_0
 def cadastro_servico(descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo,pago):
-        sql = "INSERT INTO servico_previo (descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo,pago) VALUES (%s, %s,%s, %s,%s, %s,%s,%s)"
+        sql = "INSERT INTO servico_previo (descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo,pago) VALUES (%s, %s,%s, %s,%s, %s,%s,%s,%s)"
         
         val = (descricao_servico,data_registro,data_entrega,user_inicio,user_fim,realizado,valor,deposito_previo_iddeposito_previo,pago)
         mycursor.execute(sql, val)
@@ -177,10 +177,7 @@ def pagamento_servico(cod):
         print("PAGAMENTO REALIZADO COM SUCESSO")
         print("************************************************************")   
 
-def sistema():
-        sql = "UPDATE deposito_previo SET pago = %s WHERE idservico_previo = %s"
 
-        
 
 
        
