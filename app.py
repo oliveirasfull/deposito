@@ -255,7 +255,7 @@ def servico_previ0(cod):
     from datetime import datetime
     from random import randint
     all_depositos_previos = busca_deposito()
-   
+    pago = 1
     data_e_hora_atuais = datetime.now()
     ale2 =randint(100,200)
     lista_servico=None
@@ -270,7 +270,7 @@ def servico_previ0(cod):
     servico_previo_maiunsculo = servico_previo.upper()
     for i in all_depositos_previos:   
         if i.cod_deposito == codigo:
-            cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,i.criador,user_fim,realizado,valor_servico,codigo)
+            cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,i.criador,user_fim,realizado,valor_servico,codigo,pago)
              
                 #cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,j.criador,user_fim,realizado,valor_servico,i.cod_deposito)
 
