@@ -132,18 +132,23 @@ def caixaDoDia():
     from random import randint
     from datetime import datetime
     cpf = request.form['cpf']
-    valor = request.form['valor']
-    servico = request.form['servico']
+    nome_minusculo = request.form['nome_solicitante']
+    nome = nome_minusculo.upper()
+    tipo_documento_minus = request.form['tipo_documento']
+    tipo_documento = tipo_documento_minus.upper()
+    criador = request.form['criador']
+    telefone = request.form['valor_servico']
 
-    ale =randint(2,100)
-    
+    #ale =randint(2,100)
+    ale2 =randint(100,200)
+
+
     data_e_hora_atuais = datetime.now()
-    data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y')
-    caixa = CaixaDiario(user,ale,valor,servico,cpf,data_e_hora_em_texto)
-
-    lista.append(caixa)
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
   
-    return redirect('/servico')
+    
+
+    return render_template('caixadia.html')
 
 
 @app.route('/previo')
@@ -279,25 +284,36 @@ def servico_previ0(cod):
 
 @app.route('/comprovante/<cod>', methods=['GET','POST'])
 def comprovante(cod):
+    codigo = int(cod)
     from reportlab.lib import utils
     from reportlab.lib.pagesizes import letter
     total = 0
     servico_realizado = 0
     servico_aberto = 0
     lista_servicos =[]
+
+    nome = 'LUCAS CRISTHIAN'
+    
+    
     lista_doida = []
     
     all_depositos_previos = busca_deposito()
     all_servicos_previos = busca_servico(cod)
 
-
+  
     for i in all_depositos_previos:
-        if i.cod_deposito == cod:
-            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
-            lista_doida.append(deposito_serv)
+        deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+        lista_doida.append(deposito_serv)
+
+    for x in lista_doida:
+        if x.cod_deposito == codigo:
+            print('LARISSA TU E TOP')
+            nome = x.nome_solicitante
+
+        	
    
     for j in all_servicos_previos:
-        if j.cod_deposito == cod:
+
             servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor)
 
             lista_servicos.append(servicos)
@@ -309,9 +325,9 @@ def comprovante(cod):
                 servico_realizado = j.valor + servico_realizado
     total = servico_realizado+servico_aberto
     
-    
-    
-    
+
+  
+
     
     output = BytesIO()  
     p = canvas.Canvas(output)
@@ -328,8 +344,12 @@ def comprovante(cod):
     p.drawString(105,750,'SERVENTIA EXTRAJUDICIAL DA COMARCA DE SENA MADUREIRA/AC')
     p.drawString(30,703,'DOCUMENTO:')
     p.line(120,700,580,700)
+
+   
+
+
     
-    p.drawString(120,703,cod)
+    p.drawString(120,703,nome)
     #p.drawString(500,750,"12/12/2010")
     
 
@@ -344,6 +364,9 @@ def comprovante(cod):
     response = make_response(pdf_out)
     response.headers['Content-Disposition'] = "attachment; filename=comprovante.pdf"
     response.mimetype = 'application/pdf'
+
+
+
 
     return response
     
