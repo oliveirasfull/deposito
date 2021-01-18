@@ -373,25 +373,37 @@ def comprovante(cod):
     for l in lista_servicos:
         quantidade_geral += 1
 
-    print('*********************')
-    print(quantidade_geral)
+
+
+   # quantidade de linhas para serviços
     linha = 616 
+    
     for r in range(quantidade_geral):
         
         p.line(30,linha,580,linha)
         linha = (linha-18)
         p.line(30,linha,580,linha)
-        
-        
-    p.line(30,616,30,linha)
-    p.line(580,616,580,linha)
 
-    # linha para registro de serviços 
+        
+    p.line(30,616,30,linha) # linha esquerda    
+    p.line(500,616,500,linha) # linha esquerda
+    p.line(580,616,580,linha) # linha direita
+
+    # serviços 
+    local_linha = 601
+    for m in lista_servicos:
+        valor_serv = str(m.valor)
+        p.drawString(35,local_linha,m.descricao_servico)
+        p.drawString(504,local_linha,valor_serv)
+        local_linha -= 18
+        
+
+  
+
 
 
    
     p.line(100,50,510,50)
-    p.line(100,100,200,200)
     p.drawString(188,30,nome_geral)
     p.showPage()
     p.save()
