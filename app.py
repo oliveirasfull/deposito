@@ -60,7 +60,7 @@ def autenticar ():
         if usuario == 'dirce':
             return redirect('/index_admin')
         else:
-            return redirect('/index')
+            return redirect('/index_user')
     else:
         return redirect('/erro') 
         ##return redirect('/index')
@@ -69,12 +69,12 @@ def autenticar ():
 def erro():
 
     return render_template('login_erro.html')
-@app.route('/index')
+@app.route('/index_user')
 def index():
     usuario = user
     
 
-    return render_template('index.html', usuario=usuario)
+    return render_template('user/index.html', usuario=usuario)
 @app.route('/index_admin')
 def index_admin():
     usuario = user
@@ -444,7 +444,7 @@ def DepositoPrevio():
     
     return render_template('admin/deposito_previo.html',pendente=pendente,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
 
-@app.route('/orcamento')
+@app.route('/orcamento_user')
 def orcamento():
     all_depositos_previos = busca_deposito()
     deposito_com_servico_nao_pagos = []
@@ -456,7 +456,7 @@ def orcamento():
    
         
     
-    return render_template('orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
+    return render_template('/templates/user/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
 
 
 
