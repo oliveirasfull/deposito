@@ -208,7 +208,7 @@ def deposito_previo():
         id_user = 2
     if criador == "Gabriel":
         id_user = 5
-    if criador == "Natacha":
+    if criador == "Natasha":
         id_user = 6
     if criador == "Everaldo":
         id_user = 7
@@ -290,9 +290,12 @@ def comprovante(cod):
     total = 0
     servico_realizado = 0
     servico_aberto = 0
+    quantidade_geral = 0
     lista_servicos =[]
+  
 
     nome = 'LUCAS CRISTHIAN'
+    nome_geral="LUCAS CRISTHIAN SILVEIRA DE OLIVEIRA"
     
     
     lista_doida = []
@@ -307,8 +310,11 @@ def comprovante(cod):
 
     for x in lista_doida:
         if x.cod_deposito == codigo:
-            print('LARISSA TU E TOP')
             nome = x.nome_solicitante
+            natureza = x.tipo_documento
+            cpf = x.cpf_solicitante
+            telefone = x.telefone
+            nome_geral = buscar_usuario(x.criador)
 
         	
    
@@ -323,7 +329,13 @@ def comprovante(cod):
                 servico_aberto = j.valor + servico_aberto
             if j.realizacao == 1:
                 servico_realizado = j.valor + servico_realizado
+
+
+
+
     total = servico_realizado+servico_aberto
+
+
     
 
   
@@ -342,20 +354,45 @@ def comprovante(cod):
                width=200, height=(150 * aspect))
     p.restoreState()
     p.drawString(105,750,'SERVENTIA EXTRAJUDICIAL DA COMARCA DE SENA MADUREIRA/AC')
-    p.drawString(30,703,'DOCUMENTO:')
+    p.drawString(30,700,'SOLICITANTE:')
     p.line(120,700,580,700)
-
-   
-
-
-    
-    p.drawString(120,703,nome)
+    p.drawString(120,702,nome)
     #p.drawString(500,750,"12/12/2010")
+
+    p.drawString(30,682,'NATUREZA:')
+    p.line(120,682,580,682)
+    p.drawString(120,685,natureza)
+
+    p.drawString(30,664,'CPF:')
+    p.line(120,664,580,664)
+    p.drawString(120,667,cpf)
     
+    p.drawString(30,646,'TELEFONE:')
+    p.line(120,646,580,646)
+    p.drawString(120,649,telefone)
+    for l in lista_servicos:
+        quantidade_geral += 1
+
+    print('*********************')
+    print(quantidade_geral)
+    linha = 616 
+    for r in range(quantidade_geral):
+        
+        p.line(30,linha,580,linha)
+        linha = (linha-18)
+        p.line(30,linha,580,linha)
+        
+        
+    p.line(30,616,30,linha)
+    p.line(580,616,580,linha)
+
+    # linha para registro de serviços 
+
 
    
     p.line(100,50,510,50)
-    p.drawString(245,30,'FUNCIONÁRIO')
+    p.line(100,100,200,200)
+    p.drawString(188,30,nome_geral)
     p.showPage()
     p.save()
 

@@ -174,7 +174,17 @@ def servicos_realizado_dia(data):
                 lista_realizados_dia.append(lista_realizados)
                
         return lista_realizados_dia
-
+def buscar_usuario(usuario):
+        
+        sql= "SELECT nome_completo from usuario where nome =%s";
+        val = (usuario,)
+        mycursor.execute(sql,val)
+        myresult = mycursor.fetchall()
+        print(mycursor.rowcount, "record inserted.")
+        for i in myresult:
+                servidor = i[0]
+        return servidor
+        
 
         
        
