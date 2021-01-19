@@ -333,7 +333,7 @@ def comprovante(cod):
 
 
 
-    total = servico_realizado+servico_aberto
+    total = str(servico_realizado+servico_aberto)
 
 
     
@@ -383,11 +383,12 @@ def comprovante(cod):
         p.line(30,linha,580,linha)
         linha = (linha-18)
         p.line(30,linha,580,linha)
-
-        
+    linha -=18
+    p.line(30,linha,580,linha) # preenchimento da linha do valor total    
     p.line(30,616,30,linha) # linha esquerda    
     p.line(500,616,500,linha) # linha esquerda
     p.line(580,616,580,linha) # linha direita
+    
 
     # serviços 
     local_linha = 601
@@ -397,8 +398,12 @@ def comprovante(cod):
         p.drawString(504,local_linha,valor_serv)
         local_linha -= 18
         
-
   
+
+    p.drawString(510,local_linha,total)
+    p.drawString(510,local_linha,total)
+    p.drawString(200,local_linha,'VALOR TOTAL')
+    p.drawString(200,local_linha,'VALOR TOTAL')
 
 
 
