@@ -206,7 +206,7 @@ def apagar_deposito(cod):
 
     #all_depositos_previos.append(busca_deposito(lista_deposito_previo3))
         
-    return redirect('/orcamento')
+    return redirect('/orcamento_user')
 @app.route('/apaga_servico/<ist>/<cod>' ,methods=['GET', 'POST'])
 def apagar_servico(ist,cod):
     delete_servico(cod)
@@ -252,7 +252,7 @@ def deposito_previo():
     
     cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago)
 
-    return redirect('/orcamento')
+    return redirect('/orcamento_user')
 
 @app.route('/registro/<cod>', methods=['GET','POST'])
 def registro(cod):
@@ -456,7 +456,7 @@ def orcamento():
    
         
     
-    return render_template('/templates/user/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
+    return render_template('user/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
 
 
 
