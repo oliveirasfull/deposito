@@ -135,6 +135,8 @@ def servicos_abertos():
         myresult2 = mycursor.fetchall()
         for i in myresult2:
                 total_orcamento = i[0]
+                print(total_orcamento)
+                print("********************************************************")
         total_deposito_previo = valor_total - total_orcamento
 
         return total_deposito_previo
@@ -146,7 +148,7 @@ def lista_de_depositos_com_servico_aberto():
         
         return myresult
 def qtd_servicos_abertos():
-        sql= 'SELECT count(*) FROM servico_previo WHERE realizado = 0'
+        sql= 'SELECT count(*) FROM servico_previo WHERE realizado = 0 and pago = 1'
         mycursor.execute(sql)
         myresult = mycursor.fetchall()
         for i in myresult:
