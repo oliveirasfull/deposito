@@ -405,11 +405,10 @@ def comprovante(cod):
     p.drawString(200,local_linha,'VALOR TOTAL')
     p.drawString(200,local_linha,'VALOR TOTAL')
 
-
-
-   
-    p.line(100,50,510,50)
-    p.drawString(188,30,nome_geral)
+    local_linha -= 64
+    p.line(100,local_linha,510,local_linha)
+    local_linha -= 20
+    p.drawString(188,local_linha,nome_geral)
     p.showPage()
     p.save()
 
