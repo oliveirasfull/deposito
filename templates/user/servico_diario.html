@@ -1,0 +1,261 @@
+{% extends "user/index.html" %} {% block conteudo %}
+
+
+<input type="checkbox" name="opcoes" value="html"/> HTML<br />
+<input type="checkbox" name="opcoes" value="css"/> CSS<br />
+<input type="checkbox" name="opcoes" value="javascript"/> JavaScript<br />
+<input type="checkbox" name="opcoes" value="php"/> PHP
+
+<div class="btn-group">
+    <a href="#" class="btn btn-primary"><i class="fa fa-cogs"></i></a>
+    <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" style="padding: 5px" id="myDiv">
+        <li><p><input type="checkbox" value="id1" > OA Number</p></li>
+        <li><p><input type="checkbox" value="id2" >Customer</p></li>
+        <li><p><input type="checkbox" value="id3" > OA Date</p></li>
+        <li><p><input type="checkbox" value="id4" >Product Code</p></li>
+        <li><p><input type="checkbox" value="id5" >Name</p></li>
+        <li><p><input type="checkbox" value="id6" >WI Number</p></li>
+        <li><p><input type="checkbox" value="id7" >WI QTY</p></li>
+        <li><p><input type="checkbox" value="id8" >Production QTY</p></li>
+        <li><p><input type="checkbox" value="id9" >PD Sr.No (from-to) projeto paralelo de quando o valor supera 3000 mil reais</p></li>
+        <li><p><input type="checkbox" value="id10" > Production Date</p></li>
+        <button class="btn btn-info" onClick="showTable();">Go</button>
+    </ul>
+</div>
+
+<form action="#" onsubmit="return false">
+        CEP: <input type="text" id="cep" maxlength="9" placeholder="13483-000" autofocus><br><br>
+        UF: <input type="text" id="uf"><br>
+        Cidade: <input type="text" id="cidade"><br>
+        Bairro: <input type="text" id="bairro"><br>
+        Endereço: <input type="text" id="endereco">
+    </form>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        /*
+         * Para efeito de demonstração, o JavaScript foi
+         * incorporado no arquivo HTML.
+         * O ideal é que você faça em um arquivo ".js" separado. Para mais informações
+         * visite o endereço https://developer.yahoo.com/performance/rules.html#external
+         */
+        
+        // Registra o evento blur do campo "cep", ou seja, a pesquisa será feita
+        // quando o usuário sair do campo "cep"
+        $("#cep").blur(function(){
+            // Remove tudo o que não é número para fazer a pesquisa
+            var cep = this.value.replace(/[^0-9]/, "");
+            
+            // Validação do CEP; caso o CEP não possua 8 números, então cancela
+            // a consulta
+            if(cep.length != 8){
+                return false;
+            }
+            
+            // A url de pesquisa consiste no endereço do webservice + o cep que
+            // o usuário informou + o tipo de retorno desejado (entre "json",
+            // "jsonp", "xml", "piped" ou "querty")
+            var url = "https://viacep.com.br/ws/"+cep+"/json/";
+            
+            // Faz a pesquisa do CEP, tratando o retorno com try/catch para que
+            // caso ocorra algum erro (o cep pode não existir, por exemplo) a
+            // usabilidade não seja afetada, assim o usuário pode continuar//
+            // preenchendo os campos normalmente
+            $.getJSON(url, function(dadosRetorno){
+                try{
+                    // Preenche os campos de acordo com o retorno da pesquisa
+                    $("#endereco").val(dadosRetorno.logradouro);
+                    $("#bairro").val(dadosRetorno.bairro);
+                    $("#cidade").val(dadosRetorno.localidade);
+                    $("#uf").val(dadosRetorno.uf);
+                }catch(ex){}
+            });
+        });
+    </script>
+
+
+    <div class="card-body pt-2">
+            <h6 class="text-muted text-center font-weight-bold mt-2" style="font-size: 80%;">Valores cadastrados</h6>
+            <div class="d-flex justify-content-end">
+                <div class="form-inline mb-3"><span class="text-muted font-weight-bold" style="font-size: 90%;">Exercício:</span><select id="listaExercicio" name="listaExercicio" class="form-control ml-2 mr-2" size="1" onchange="mojarra.ab(this,event,'change','@this','@form')">	<option value="2021" selected="selected">2021</option>
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+<option value="2018">2018</option>
+</select><span class="ml-2 text-muted font-weight-bold" style="font-size: 90%;">Redução:</span><select id="listaReducao" name="listaReducao" class="form-control ml-2" size="1" onchange="mojarra.ab(this,event,'change','@this','@form')">	<option value="">Sem redução</option>
+<option value="50%">50%</option>
+<option value="75%">75%</option>
+<option value="80%" selected="selected">80%</option>
+</select>
+                </div>	
+            </div><table class="table" style="font-size: 90%;">
+<thead>
+<tr>
+<th class="text-center py-1" scope="col">Data Início</th>
+<th class="text-center py-1" scope="col">Data Final</th>
+<th class="py-1 text-center" scope="col">Redução</th>
+<th class="py-1" scope="col">Faixa</th>
+<th class="py-1 text-right" scope="col">Emolumentos</th>
+<th class="py-1 text-right" scope="col">Fecom</th>
+<th class="py-1 text-right" scope="col">Funej</th>
+<th class="py-1 text-right" scope="col">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">sem valor declarado ou até R$ 3.000,00</td>
+<td class="py-1 text-right">13,85</td>
+<td class="py-1 text-right">0,82</td>
+<td class="py-1 text-right">1,63</td>
+<td class="py-1 text-right">16,30</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 3.000,01 até R$ 5.000,00</td>
+<td class="py-1 text-right">25,67</td>
+<td class="py-1 text-right">1,51</td>
+<td class="py-1 text-right">3,02</td>
+<td class="py-1 text-right">30,20</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 5.000,01 até R$ 15.000,00</td>
+<td class="py-1 text-right">34,34</td>
+<td class="py-1 text-right">2,02</td>
+<td class="py-1 text-right">4,04</td>
+<td class="py-1 text-right">40,40</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 15.000,01 até R$ 30.000,00</td>
+<td class="py-1 text-right">51,43</td>
+<td class="py-1 text-right">3,02</td>
+<td class="py-1 text-right">6,05</td>
+<td class="py-1 text-right">60,50</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 30.000,01 até R$ 50.000,00</td>
+<td class="py-1 text-right">85,67</td>
+<td class="py-1 text-right">5,05</td>
+<td class="py-1 text-right">10,08</td>
+<td class="py-1 text-right">100,80</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 50.000,01 até R$ 80.000,00</td>
+<td class="py-1 text-right">137,10</td>
+<td class="py-1 text-right">8,07</td>
+<td class="py-1 text-right">16,13</td>
+<td class="py-1 text-right">161,30</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 80.000,01 até R$ 100.000,00</td>
+<td class="py-1 text-right">171,36</td>
+<td class="py-1 text-right">10,08</td>
+<td class="py-1 text-right">20,16</td>
+<td class="py-1 text-right">201,60</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 100.000,01 até R$ 150.000,00</td>
+<td class="py-1 text-right">256,95</td>
+<td class="py-1 text-right">15,12</td>
+<td class="py-1 text-right">30,23</td>
+<td class="py-1 text-right">302,30</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 150.000,01 até R$ 200.000,00</td>
+<td class="py-1 text-right">342,63</td>
+<td class="py-1 text-right">20,16</td>
+<td class="py-1 text-right">40,31</td>
+<td class="py-1 text-right">403,10</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 200.000,01 até R$ 250.000,00</td>
+<td class="py-1 text-right">428,31</td>
+<td class="py-1 text-right">25,20</td>
+<td class="py-1 text-right">50,39</td>
+<td class="py-1 text-right">503,90</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 250.000,01 até R$ 300.000,00</td>
+<td class="py-1 text-right">513,98</td>
+<td class="py-1 text-right">30,25</td>
+<td class="py-1 text-right">60,47</td>
+<td class="py-1 text-right">604,70</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 300.000,01 até R$ 350.000,00</td>
+<td class="py-1 text-right">599,68</td>
+<td class="py-1 text-right">35,27</td>
+<td class="py-1 text-right">70,55</td>
+<td class="py-1 text-right">705,50</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 350.000,01 até R$ 400.000,00</td>
+<td class="py-1 text-right">685,36</td>
+<td class="py-1 text-right">40,31</td>
+<td class="py-1 text-right">80,63</td>
+<td class="py-1 text-right">806,30</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">de R$ 400.000,01 até R$ 500.000,00</td>
+<td class="py-1 text-right">856,63</td>
+<td class="py-1 text-right">50,39</td>
+<td class="py-1 text-right">100,78</td>
+<td class="py-1 text-right">1.007,80</td>
+</tr>
+<tr>
+<td class="py-1 text-center">01/01/2021</td>
+<td class="py-1 text-center">31/12/2021</td>
+<td class="py-1 text-center">80%</td>
+<td class=" py-1">acima de R$ 500.000,00</td>
+<td class="py-1 text-right">1.027,99</td>
+<td class="py-1 text-right">60,47</td>
+<td class="py-1 text-right">120,94</td>
+<td class="py-1 text-right">1.209,40</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+{%endblock%}

@@ -56,6 +56,8 @@ def autenticar ():
     senha = request.form['senha'] 
     usuario = request.form['usuario']
     validar = login_bd(usuario,senha)
+    global user
+    user = usuario
     if validar == True:
         if usuario == 'dirce':
             return redirect('/index_admin')
@@ -99,7 +101,7 @@ def busca_nascimento():
     nome = request.form['nome_sql']
     nome_maiusculo = nome.upper()
     registro_nome.append(busca_nome_bd(nome_maiusculo))
-    print('tese')
+    
     
     return redirect('/nascimento')
 
@@ -245,7 +247,7 @@ def deposito_previo():
         id_user = 2
     if criador == "Gabriel":
         id_user = 5
-    if criador == "Natacha":
+    if criador == "Natasha":
         id_user = 6
     if criador == "Everaldo":
         id_user = 7
@@ -253,6 +255,41 @@ def deposito_previo():
     cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago)
 
     return redirect('/orcamento_user')
+
+@app.route('/depositoPrevio_admin', methods=['GET','POST'])
+def deposito_previo_admin():
+    from datetime import datetime
+    from random import randint
+
+    cpf = request.form['cpf']
+    nome_minusculo = request.form['nome_solicitante']
+    nome = nome_minusculo.upper()
+    tipo_documento_minus = request.form['tipo_documento']
+    tipo_documento = tipo_documento_minus.upper()
+    criador = request.form['criador']
+    telefone = request.form['telefone_solicitante']
+
+    pago = 0
+
+    #ale =randint(2,100)
+    ale2 =randint(100,200)
+
+    data_e_hora_atuais = datetime.now()
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
+    if criador == "Joao Paulo":
+        id_user = 3
+    if criador == "Dirce":
+        id_user = 2
+    if criador == "Gabriel":
+        id_user = 5
+    if criador == "Natacha":
+        id_user = 6
+    if criador == "Everaldo":
+        id_user = 7
+    
+    cadastra_deposito(cpf,nome,tipo_documento,criador,data_e_hora_em_texto,telefone,id_user,pago)
+
+    return redirect('/orcamento_admin')
 
 @app.route('/registro/<cod>', methods=['GET','POST'])
 def registro(cod):
@@ -291,6 +328,43 @@ def registro(cod):
    
     return render_template('registro_servico.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
 
+@app.route('/servico_admin/<cod>', methods=['GET','POST'])
+def servico_admin(cod):
+    total = 0
+    servico_realizado = 0
+    servico_aberto = 0
+    
+    codigo = int(cod)
+    lista_servicos =[]
+    lista_doida = []
+    
+    all_depositos_previos = busca_deposito()
+    all_servicos_previos = busca_servico(codigo)
+
+
+    for i in all_depositos_previos:
+        if i.cod_deposito == codigo:
+            deposito_serv = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            lista_doida.append(deposito_serv)
+   
+    for j in all_servicos_previos:
+        if j.cod_deposito == codigo:
+            servicos = servicoPrevio(j.cod_deposito,j.cod_servico,j.descricao_servico,j.data_registro,j.data_entrega,j.user_inicio,j.user_fim,j.realizacao,j.valor,j.pago)
+
+            lista_servicos.append(servicos)
+
+            if j.realizacao == 0:
+                
+                servico_aberto = j.valor + servico_aberto
+            if j.realizacao == 1:
+                servico_realizado = j.valor + servico_realizado
+    total = servico_realizado+servico_aberto
+
+  
+    #valor_servico1 = request.form['valor_servico'] 
+   
+    return render_template('admin/registro_servico.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
+
 
 @app.route('/servicoPrevio/<cod>', methods=['GET','POST'])
 def servico_previ0(cod):  
@@ -318,6 +392,7 @@ def servico_previ0(cod):
                 #cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,j.criador,user_fim,realizado,valor_servico,i.cod_deposito)
 
     return redirect (url_for('orcamento_previo',cod=cod))
+
 
 
 @app.route('/comprovante/<cod>', methods=['GET','POST'])
@@ -406,6 +481,58 @@ def atualiza_servico(ist,cod):
 
     return redirect (url_for('registro',cod=ist))
 
+
+
+
+@app.route('/orcamento_user')
+def orcamento():
+    all_depositos_previos = busca_deposito()
+    deposito_com_servico_nao_pagos = []
+    deposito_pago =[]
+    for i in all_depositos_previos:
+        if i.pago == 0:
+            deposito_pago = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
+            deposito_com_servico_nao_pagos.append(deposito_pago)
+   
+        
+    
+    return render_template('user/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
+
+
+
+
+
+@app.route('/servicoPrevio_admin/<cod>', methods=['GET','POST'])
+def servico_previ0_admin(cod):  
+    from datetime import datetime
+    from random import randint
+    all_depositos_previos = busca_deposito()
+   
+    data_e_hora_atuais = datetime.now()
+    ale2 =randint(100,200)
+    lista_servico=None
+    data_e_hora_em_texto = data_e_hora_atuais.strftime('%y/%m/%d')
+    codigo = int(cod)
+    all_servicos_previos = busca_servico(codigo)
+    data_entrega = None
+    user_fim = None
+    realizado = 0
+    servico_previo = request.form['servico_previo']
+    valor_servico = request.form['valor_servico']
+    servico_previo_maiunsculo = servico_previo.upper()
+    pago =0
+    for i in all_depositos_previos:   
+        if i.cod_deposito == codigo:
+            cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,i.criador,user_fim,realizado,valor_servico,codigo,pago)
+             
+                #cadastro_servico(servico_previo_maiunsculo,data_e_hora_em_texto,data_entrega,j.criador,user_fim,realizado,valor_servico,i.cod_deposito)
+
+    return redirect (url_for('orcamento_previo',cod=cod))
+
+
+
+
+
 @app.route('/atualiza_admin/<ist>/<cod>', methods=['GET','POST'])
 def atualiza_servico_admin(ist,cod):
     from datetime import datetime
@@ -416,6 +543,7 @@ def atualiza_servico_admin(ist,cod):
 
 
     return redirect (url_for('registro_admin',cod=ist))
+
 
 
 @app.route('/depositoPrevioTotal_admin')
@@ -443,21 +571,6 @@ def DepositoPrevio():
        
     
     return render_template('admin/deposito_previo.html',pendente=pendente,caixa=32000,qtd_servicos = qtd,servico_do_dia=servico_do_dia,total = total)
-
-@app.route('/orcamento_user')
-def orcamento():
-    all_depositos_previos = busca_deposito()
-    deposito_com_servico_nao_pagos = []
-    deposito_pago =[]
-    for i in all_depositos_previos:
-        if i.pago == 0:
-            deposito_pago = depositoPrevio(i.cod_deposito,i.cpf_solicitante,i.nome_solicitante,i.tipo_documento,i.criador,i.data_criacao,i.telefone,i.usuario,i.pago)
-            deposito_com_servico_nao_pagos.append(deposito_pago)
-   
-        
-    
-    return render_template('user/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
-
 
 
 
@@ -538,13 +651,9 @@ def registro_admin(cod):
     return render_template('admin/registro_servico.html',teste=cod, deposito = lista_doida, servicos = lista_servicos,total=total,servico_aberto=servico_aberto,servico_realizado=servico_realizado)
 
 
-
-
-
-
-
 @app.route('/orcamento_admin')
 def orcamento_admin():
+    all_depositos_previos = busca_deposito()
     deposito_com_servico_nao_pagos = []
     deposito_pago =[]
     for i in all_depositos_previos:
@@ -555,12 +664,12 @@ def orcamento_admin():
         
     
     return render_template('admin/orcamento.html',depositoGlobal= deposito_com_servico_nao_pagos,servico =lista)
-
+    
+    
 @app.route('/versenha/<numero>', methods=['GET','POST'])
 def versenha(numero):
     
   
-
     
     return render_template('atendimento/visualizarsenha.html',numero=numero)
 @app.route('/gerarsenha')
@@ -573,5 +682,12 @@ def gerarsenha():
 def pagamento(cod):
     pagamento_servico(cod)
     return redirect('/orcamento_admin')
+
+@app.route('/servicoDiario_user')
+def servico_diario_user():
+
+    return render_template('user/servico_diario.html')
+
+
 if __name__ == '__main__':
    app.run(host= '0.0.0.0',debug=True,port='8080')

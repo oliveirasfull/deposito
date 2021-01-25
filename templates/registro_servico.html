@@ -1,4 +1,4 @@
-{% extends "index.html" %} {% block conteudo %}
+{% extends "user/index.html" %} {% block conteudo %}
 
 <script>
   document.getElementById("decimal").addEventListener("change", function(){
@@ -16,7 +16,7 @@
   }
 }
 </script>
-<form action="/previo">
+<form action="/previo_user">
 <button type="submmit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">VOLTAR
 <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -95,9 +95,7 @@
                       <th>Descrição do serviço</th>
                       <th>data de registro</th>
                       <th>Valor</th>
-                      <th>Realizar Pagamento</th>
-                      <th>excluir</th>
-                   
+                      <th>Realizar Pagamento</th>         
 
                   </tr>
               </thead>
@@ -152,20 +150,7 @@
           
                             
                           </form>-->
-                          <td>
-                            <form method="post" action="/apaga_servico/{{serv.cod_deposito}}/{{serv.cod_servico}}">
-                              <button type="submmit" class="btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                      <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
-                                    </svg>
-                                     
-                                   </button>
-                                 
-          
-                            
-                          </form>
-                            </td>
-                       
+                    
                      
                   </tr>
                       {%endfor%}
