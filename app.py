@@ -233,9 +233,10 @@ def deposito_previo():
     tipo_documento = tipo_documento_minus.upper()
     criador = request.form['criador']
     telefone = request.form['telefone_solicitante']
-
+    criador = user
     pago = 0
-
+    print("*********************************")
+    print(user)
     #ale =randint(2,100)
     ale2 =randint(100,200)
 
