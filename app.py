@@ -231,7 +231,8 @@ def deposito_previo():
     nome = nome_minusculo.upper()
     tipo_documento_minus = request.form['tipo_documento']
     tipo_documento = tipo_documento_minus.upper()
-    criador = request.form['criador']
+    # criador = request.form['criador']
+
     telefone = request.form['telefone_solicitante']
     #criador = user trazaz a variavel global de log 
     pago = 0

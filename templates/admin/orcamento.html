@@ -117,6 +117,51 @@
         }
         return true;
     }
+    function valideCPF(cpf) {
+        var cpf=this.nome.value
+        
+        try {
+         console.log("erro de CPF ");
+         
+         var Soma;
+         var Resto;
+         var strCPF = cpf.replace("-", "").replace(".", "").replace(".", "")
+         Soma = 0;
+         console.log(strCPF);
+         if (strCPF == "00000000000"){
+             alert("CPF Invalido");
+             return false;
+         } 
+ 
+         for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+         Resto = (Soma * 10) % 11;
+ 
+         if ((Resto == 10) || (Resto == 11)) Resto = 0;
+         if (Resto != parseInt(strCPF.substring(9, 10))){
+            alert("CPF Invalido");
+            return false;
+         } 
+ 
+         Soma = 0;
+         for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+         Resto = (Soma * 10) % 11;
+ 
+         if ((Resto == 10) || (Resto == 11)) Resto = 0;
+         if (Resto != parseInt(strCPF.substring(10, 11))){
+             alert("CPF Invalido");
+             return false;
+         } 
+    
+         
+ 
+         return true;
+ 
+     } catch (e) {
+        alert("CPF invalido 4 ");
+         return false;
+     }
+    }
+ 
 </script>
 
 <style>
@@ -181,12 +226,14 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg ">
         <div class="modal-content ">
-                <form name="servico1" action="/depositoPrevio_admin" method="post">
+                <form name="servico1" onSubmit="return valideCPF()" action="/depositoPrevio_admin" method="post" >
                     <fieldset>
+                        <form name="cpf1">
                         <div class="form-group">
                             <label for="nome ">CPF do Apresentante</label>
-                            <input type="text" id="nome" name="cpf" maxlength="14" OnKeyPress="formatar( '###.###.###-##', this)" class="form-control">
-                        </div>
+                            <input type="text" id="nome" name="cpf" maxlength="14" onkeypress="formatar('###.###.###-##',this)" class="form-control">
+                       </form>
+                     </div>
                         <div class="form-group">
                             <label for="servico">Nome do Apresentante</label>
                             <input type="text" id="servico" name="nome_solicitante" required class="form-control">

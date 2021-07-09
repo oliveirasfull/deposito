@@ -11492,7 +11492,7 @@
 			 * * `\_PAGES\_` - Total number of pages of data in the table
 			 *
 			 *  @type string
-			 *  @default Showing _START_ to _END_ of _TOTAL_ entries
+			 *  @default pagina _START_ to _END_ of _TOTAL_ entries
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.info
@@ -11501,19 +11501,19 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "info": "Showing page _PAGE_ of _PAGES_"
+			 *          "info": "pagina page _PAGE_ of _PAGES_"
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "pagina _START_ to _END_ of _TOTAL_ entries",
 	
 	
 			/**
 			 * Display information string for when the table is empty. Typically the
 			 * format of this string should match `info`.
 			 *  @type string
-			 *  @default Showing 0 to 0 of 0 entries
+			 *  @default pagina 0 to 0 of 0 entries
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.infoEmpty
@@ -11527,7 +11527,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "pagina 0 to 0 of 0 entries",
 	
 	
 			/**
@@ -11805,7 +11805,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": "si matching records found"
 		},
 	
 	
@@ -14899,8 +14899,8 @@
 							classes.sSortAsc +' '+
 							classes.sSortDesc
 						)
-						.addClass( columns[ colIdx ] == 'asc' ?
-							classes.sSortAsc : columns[ colIdx ] == 'desc' ?
+						.addClass( columns[ colIdx ] == 'desc' ?
+							classes.sSortAsc : columns[ colIdx ] == 'asc' ?
 								classes.sSortDesc :
 								column.sSortingClass
 						);
@@ -14926,8 +14926,8 @@
 	
 					cell
 						.removeClass( classes.sSortAsc +" "+classes.sSortDesc )
-						.addClass( columns[ colIdx ] == 'asc' ?
-							classes.sSortAsc : columns[ colIdx ] == 'desc' ?
+						.addClass( columns[ colIdx ] == 'desc' ?
+							classes.sSortAsc : columns[ colIdx ] == 'asc' ?
 								classes.sSortDesc :
 								column.sSortingClass
 						);
@@ -14941,8 +14941,8 @@
 							classes.sSortJUIAscAllowed +" "+
 							classes.sSortJUIDescAllowed
 						)
-						.addClass( columns[ colIdx ] == 'asc' ?
-							classes.sSortJUIAsc : columns[ colIdx ] == 'desc' ?
+						.addClass( columns[ colIdx ] == 'desc' ?
+							classes.sSortJUIAsc : columns[ colIdx ] == 'asc' ?
 								classes.sSortJUIDesc :
 								column.sSortingClassJUI
 						);
